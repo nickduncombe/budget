@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f0f0f; color: #f1f1f1; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  /* ---- Header ---- */
+  .header { background: #0f0f0f; border-bottom: 1px solid #272727; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .header-title { font-size: 18px; font-weight: 700; color: #f1f1f1; letter-spacing: -0.2px; }
+  .header-title span { color: #ff0000; }
+  .month-nav { display: flex; align-items: center; gap: 8px; }
+  .month-nav button { background: #272727; border: none; color: #f1f1f1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.15s; font-family: inherit; }
+  .month-nav button:hover { background: #3f3f3f; }
+  .month-select { background: #272727; border: 1px solid #3f3f3f; color: #f1f1f1; padding: 6px 12px; border-radius: 6px; font-size: 14px; cursor: pointer; outline: none; font-family: inherit; }
+  .btn-new { background: #272727; border: 1px solid #3f3f3f; color: #f1f1f1; padding: 7px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.15s; font-family: inherit; }
+  .btn-new:hover { background: #3f3f3f; }
+
+  /* ---- Main ---- */
+  .main { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+
+  /* ---- KPI Cards ---- */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .kpi-card { background: #212121; border-radius: 10px; padding: 18px 20px; border: 1px solid #272727; }
+  .kpi-label { font-size: 11px; color: #717171; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; font-weight: 500; }
+  .kpi-value { font-size: 28px; font-weight: 700; line-height: 1; }
+  .kpi-value.income { color: #2ba640; }
+  .kpi-value.spend { color: #ff9500; }
+  .kpi-value.net-pos { color: #2ba640; }
+  .kpi-value.net-neg { color: #ff4e45; }
+  .kpi-value.blue { color: #3ea6ff; }
+  .kpi-value.red { color: #ff4e45; }
+  .kpi-sub { font-size: 12px; color: #717171; margin-top: 5px; }
+  .income-edit { font-size: 28px; font-weight: 700; color: #2ba640; background: transparent; border: none; border-bottom: 1px dashed #3f3f3f; width: 140px; outline: none; font-family: inherit; }
+  .income-edit:focus { border-bottom-color: #3ea6ff; }
+
+  /* ---- Content Grid ---- */
+  .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 16px; }
+  .left-col { display: flex; flex-direction: column; gap: 16px; }
+
+  /* ---- Expense Sections ---- */
+  .sections-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .section-card { background: #212121; border-radius: 10px; overflow: hidden; border: 1px solid #272727; }
+  .section-header { padding: 14px 16px 10px; border-bottom: 1px solid #272727; display: flex; align-items: center; justify-content: space-between; }
+  .section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+  .section-totals { display: flex; gap: 10px; align-items: center; }
+  .section-total { font-size: 17px; font-weight: 700; color: #f1f1f1; }
+  .section-paid-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .badge-green { background: rgba(43,166,64,0.18); color: #2ba640; }
+  .badge-yellow { background: rgba(255,149,0,0.15); color: #ff9500; }
+  .progress-bar { height: 2px; background: #272727; }
+  .progress-fill { height: 100%; transition: width 0.4s ease; }
+
+  /* ---- Items Table ---- */
+  .items-table { width: 100%; padding: 4px 0; }
+  .item-row { display: grid; grid-template-columns: 28px 1fr 90px 90px 28px; align-items: center; padding: 6px 12px; gap: 6px; transition: background 0.1s; }
+  .item-row:hover { background: #272727; }
+  .item-row.is-paid { opacity: 0.4; }
+  .item-checkbox { width: 18px; height: 18px; accent-color: #2ba640; cursor: pointer; flex-shrink: 0; }
+  .item-name { font-size: 13px; color: #f1f1f1; background: transparent; border: none; width: 100%; outline: none; padding: 2px 4px; border-radius: 4px; font-family: inherit; }
+  .item-name:hover { background: #3f3f3f; }
+  .item-name:focus { background: #3f3f3f; }
+  .item-amount { font-size: 13px; color: #aaaaaa; background: transparent; border: none; width: 100%; outline: none; text-align: right; padding: 2px 4px; border-radius: 4px; font-family: inherit; }
+  .item-amount:hover { background: #3f3f3f; color: #f1f1f1; }
+  .item-amount:focus { background: #3f3f3f; color: #f1f1f1; }
+  .item-paid-amt { font-size: 13px; background: transparent; border: none; width: 100%; outline: none; text-align: right; padding: 2px 4px; border-radius: 4px; font-family: inherit; }
+  .item-paid-amt:hover { background: #3f3f3f; }
+  .item-paid-amt:focus { background: #3f3f3f; }
+  .paid-color { color: #2ba640; }
+  .unpaid-color { color: #3f3f3f; }
+  .item-delete { background: none; border: none; color: #3f3f3f; cursor: pointer; font-size: 14px; padding: 0; line-height: 1; transition: color 0.1s; text-align: center; }
+  .item-delete:hover { color: #ff4e45; }
+  .col-headers { display: grid; grid-template-columns: 28px 1fr 90px 90px 28px; padding: 5px 12px; gap: 6px; border-bottom: 1px solid #272727; }
+  .col-hdr { font-size: 10px; color: #3f3f3f; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 500; }
+  .col-hdr.right { text-align: right; }
+
+  /* ---- Section Balance / Remainder ---- */
+  .section-balance-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px 4px; border-top: 1px solid #272727; }
+  .section-balance-label { font-size: 11px; font-weight: 500; color: #717171; text-transform: uppercase; letter-spacing: 0.6px; }
+  .section-balance-input { font-size: 14px; font-weight: 700; background: transparent; border: none; border-bottom: 1px dashed #3f3f3f; outline: none; width: 110px; text-align: right; font-family: inherit; color: #f1f1f1; }
+  .section-balance-input:focus { border-bottom-color: #3ea6ff; }
+  .section-remainder-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 12px 8px; }
+  .section-remainder-label { font-size: 11px; font-weight: 500; color: #717171; text-transform: uppercase; letter-spacing: 0.6px; }
+  .section-remainder-value { font-size: 16px; font-weight: 700; }
+
+  /* ---- Add Item ---- */
+  .add-item-row { padding: 4px 12px 8px; }
+  .btn-add-item { background: none; border: 1px dashed #3f3f3f; color: #717171; width: 100%; padding: 7px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: all 0.15s; font-family: inherit; }
+  .btn-add-item:hover { border-color: #aaaaaa; color: #aaaaaa; }
+
+  /* ---- Section Footer ---- */
+  .section-footer { display: grid; grid-template-columns: 28px 1fr 90px 90px 28px; padding: 8px 12px; gap: 6px; border-top: 1px solid #272727; background: #1a1a1a; }
+  .section-footer-label { font-size: 12px; font-weight: 600; color: #717171; grid-column: 1/3; padding-left: 4px; display: flex; align-items: center; }
+  .section-footer-total { font-size: 13px; font-weight: 700; color: #f1f1f1; text-align: right; padding-right: 4px; }
+  .section-footer-paid { font-size: 13px; font-weight: 700; text-align: right; padding-right: 4px; }
+
+  /* ---- Right Panel ---- */
+  .right-col { display: flex; flex-direction: column; gap: 16px; }
+  .side-card { background: #212121; border-radius: 10px; overflow: hidden; border: 1px solid #272727; }
+  .side-card-header { padding: 12px 16px; border-bottom: 1px solid #272727; display: flex; align-items: center; justify-content: space-between; }
+  .side-card-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #717171; }
+  .side-card-body { padding: 14px 16px; }
+
+  /* ---- Debt Cards ---- */
+  .debt-item { margin-bottom: 14px; }
+  .debt-item:last-child { margin-bottom: 0; }
+  .debt-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .debt-name { font-size: 13px; color: #f1f1f1; }
+  .debt-bal { font-size: 13px; font-weight: 700; color: #ff4e45; }
+  .debt-meta { display: flex; justify-content: space-between; font-size: 11px; color: #717171; margin-bottom: 5px; }
+  .debt-progress { height: 3px; background: #3f3f3f; border-radius: 2px; overflow: hidden; }
+  .debt-progress-fill { height: 100%; background: #ff4e45; border-radius: 2px; }
+  .debt-total-row { display: flex; justify-content: space-between; padding: 10px 0 0; border-top: 1px solid #272727; margin-top: 10px; }
+  .debt-total-label { font-size: 12px; font-weight: 600; color: #717171; }
+  .debt-total-val { font-size: 18px; font-weight: 700; color: #ff4e45; }
+  .btn-add-debt { background: none; border: 1px dashed #3f3f3f; color: #717171; width: 100%; padding: 5px; border-radius: 6px; cursor: pointer; font-size: 11px; margin-top: 8px; transition: all 0.15s; font-family: inherit; }
+  .btn-add-debt:hover { border-color: #aaaaaa; color: #aaaaaa; }
+  .debt-edit-input { background: #272727; border: 1px solid #3f3f3f; color: #f1f1f1; border-radius: 4px; padding: 3px 8px; font-size: 12px; width: 90px; outline: none; font-family: inherit; }
+  .debt-delete { background: none; border: none; color: #3f3f3f; cursor: pointer; font-size: 13px; transition: color 0.1s; }
+  .debt-delete:hover { color: #ff4e45; }
+
+  /* ---- Savings ---- */
+  .savings-total-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid #272727; }
+  .savings-total-label { font-size: 11px; font-weight: 600; color: #717171; text-transform: uppercase; letter-spacing: 0.8px; }
+  .savings-total-input { font-size: 22px; font-weight: 700; color: #2ba640; background: transparent; border: none; border-bottom: 1px dashed #3f3f3f; outline: none; width: 130px; text-align: right; font-family: inherit; }
+  .savings-total-input:focus { border-bottom-color: #2ba640; }
+  .savings-exp-header { font-size: 10px; color: #717171; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; font-weight: 500; }
+  .saving-exp-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid #272727; }
+  .saving-exp-row:last-of-type { border-bottom: none; }
+  .saving-exp-name { flex: 1; background: transparent; border: none; color: #f1f1f1; font-size: 13px; outline: none; padding: 2px 4px; border-radius: 4px; font-family: inherit; }
+  .saving-exp-name:hover, .saving-exp-name:focus { background: #3f3f3f; }
+  .saving-exp-amt { width: 90px; background: transparent; border: none; color: #ff9500; font-size: 13px; font-weight: 600; outline: none; text-align: right; padding: 2px 4px; border-radius: 4px; font-family: inherit; }
+  .saving-exp-amt:hover, .saving-exp-amt:focus { background: #3f3f3f; }
+  .saving-exp-del { background: none; border: none; color: #3f3f3f; cursor: pointer; font-size: 13px; transition: color 0.1s; flex-shrink: 0; }
+  .saving-exp-del:hover { color: #ff4e45; }
+  .savings-remainder-row { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; margin-top: 10px; border-top: 1px solid #272727; }
+  .savings-remainder-label { font-size: 12px; font-weight: 600; color: #717171; }
+  .btn-add-saving { background: none; border: 1px dashed #3f3f3f; color: #717171; width: 100%; padding: 5px; border-radius: 6px; cursor: pointer; font-size: 11px; margin-top: 8px; transition: all 0.15s; font-family: inherit; }
+  .btn-add-saving:hover { border-color: #2ba640; color: #2ba640; }
+
+  /* ---- AMEX Card Tracker ---- */
+  .amex-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #272727; }
+  .amex-row:last-child { border-bottom: none; }
+  .amex-key { font-size: 12px; color: #717171; font-weight: 500; }
+  .amex-val { font-size: 13px; font-weight: 600; color: #f1f1f1; }
+  .amex-val.positive { color: #2ba640; }
+  .amex-val.negative { color: #ff4e45; }
+
+  /* ---- Charts ---- */
+  .charts-section { margin-top: 0; }
+  .chart-card { background: #212121; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; border: 1px solid #272727; }
+  .chart-title { font-size: 11px; font-weight: 600; color: #717171; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+  .chart-wrap { position: relative; }
+
+  /* ---- Notes ---- */
+  .notes-area { width: 100%; background: #272727; border: 1px solid #3f3f3f; border-radius: 6px; color: #aaaaaa; padding: 10px 12px; font-size: 13px; resize: vertical; min-height: 60px; outline: none; font-family: inherit; }
+  .notes-area:focus { border-color: #717171; }
+
+  /* ---- Modals ---- */
+  .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 999; display: flex; align-items: center; justify-content: center; }
+  .modal { background: #212121; border: 1px solid #3f3f3f; border-radius: 12px; padding: 26px; min-width: 320px; }
+  .modal h3 { font-size: 16px; font-weight: 700; margin-bottom: 18px; color: #f1f1f1; }
+  .modal label { font-size: 12px; color: #717171; display: block; margin-bottom: 4px; font-weight: 500; }
+  .modal input, .modal select { width: 100%; background: #272727; border: 1px solid #3f3f3f; color: #f1f1f1; padding: 9px 12px; border-radius: 6px; font-size: 14px; margin-bottom: 12px; outline: none; font-family: inherit; }
+  .modal input:focus, .modal select:focus { border-color: #717171; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; }
+  .btn-primary { background: #272727; border: 1px solid #3f3f3f; color: #f1f1f1; padding: 9px 22px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; font-family: inherit; transition: background 0.15s; }
+  .btn-primary:hover { background: #3f3f3f; }
+  .btn-secondary { background: transparent; border: 1px solid #3f3f3f; color: #aaaaaa; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; font-family: inherit; transition: background 0.15s; }
+  .btn-secondary:hover { background: #272727; }
+
+  /* ---- Empty state ---- */
+  .empty-state { text-align: center; padding: 24px 16px; color: #3f3f3f; font-size: 13px; }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1100px) { .content-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 780px) { .sections-grid { grid-template-columns: 1fr; } .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+</style>
+<style>
+  /* ---- Password Gate ---- */
+  #passwordGate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0f0f0f;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gate-card {
+    background: #212121; border: 1px solid #272727; border-radius: 14px;
+    padding: 40px 36px; width: 340px; text-align: center;
+  }
+  .gate-icon { font-size: 36px; margin-bottom: 16px; }
+  .gate-title { font-size: 20px; font-weight: 700; color: #f1f1f1; margin-bottom: 6px; }
+  .gate-sub { font-size: 13px; color: #717171; margin-bottom: 28px; }
+  .gate-input {
+    width: 100%; background: #0f0f0f; border: 1px solid #3f3f3f;
+    border-radius: 8px; color: #f1f1f1; font-size: 16px; padding: 12px 16px;
+    outline: none; font-family: inherit; text-align: center; letter-spacing: 2px;
+    transition: border-color 0.2s;
+  }
+  .gate-input:focus { border-color: #3ea6ff; }
+  .gate-input.shake { animation: shake 0.35s ease; border-color: #ff4e45; }
+  .gate-btn {
+    margin-top: 14px; width: 100%; background: #3ea6ff; border: none;
+    border-radius: 8px; color: #0f0f0f; font-size: 15px; font-weight: 700;
+    padding: 12px; cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+  }
+  .gate-btn:hover { opacity: 0.85; }
+  .gate-error { margin-top: 12px; font-size: 13px; color: #ff4e45; min-height: 18px; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Password Gate -->
+<div id="passwordGate">
+  <div class="gate-card">
+    <div class="gate-icon">🔒</div>
+    <div class="gate-title">Budget Dashboard</div>
+    <div class="gate-sub">Enter your password to continue</div>
+    <input class="gate-input" id="gateInput" type="password" placeholder="••••••••"
+      onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="current-password" />
+    <button class="gate-btn" onclick="checkPassword()">Unlock</button>
+    <div class="gate-error" id="gateError"></div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-title">💷 <span>Budget</span> Dashboard</div>
+  <div class="month-nav">
+    <button onclick="prevMonth()" title="Previous month">‹</button>
+    <select class="month-select" id="monthSelect" onchange="goToMonth(this.value)"></select>
+    <button onclick="nextMonth()" title="Next month">›</button>
+    <button class="btn-new" onclick="showNewMonthModal()">+ New Month</button>
+    <button onclick="saveToFile()" style="background:#272727;border:1px solid #3f3f3f;color:#f1f1f1;padding:7px 16px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:500;font-family:inherit;transition:background 0.15s;" onmouseover="this.style.background='#3f3f3f'" onmouseout="this.style.background='#272727'" title="Save all data into the file">💾 Save</button>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <!-- KPI Row -->
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <!-- Content -->
+  <div class="content-grid">
+    <div class="left-col">
+      <!-- Expense sections -->
+      <div class="sections-grid" id="sectionsGrid"></div>
+      <!-- Charts -->
+      <div class="charts-section">
+        <div class="chart-card">
+          <div class="chart-title">12-Month Income vs Spend</div>
+          <div class="chart-wrap" style="height:220px"><canvas id="trendChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Spending Breakdown (This Month)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center">
+            <div class="chart-wrap" style="height:200px"><canvas id="breakdownChart"></canvas></div>
+            <div id="breakdownLegend"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <!-- AMEX Card -->
+      <div class="side-card" id="amexCard"></div>
+      <!-- Debt -->
+      <div class="side-card" id="debtCard"></div>
+      <!-- Savings -->
+      <div class="side-card" id="savingsCard"></div>
+      <!-- Notes -->
+      <div class="side-card">
+        <div class="side-card-header"><span class="side-card-title">Notes</span></div>
+        <div class="side-card-body">
+          <textarea class="notes-area" id="notesArea" placeholder="Add notes for this month…" oninput="saveNotes(this.value)"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Month Modal -->
+<div class="modal-overlay" id="newMonthModal" style="display:none" onclick="if(event.target===this)closeNewMonthModal()">
+  <div class="modal">
+    <h3>Create New Month</h3>
+    <label>Month</label>
+    <select id="newMonthMonth">
+      <option value="1">January</option><option value="2">February</option>
+      <option value="3">March</option><option value="4">April</option>
+      <option value="5">May</option><option value="6">June</option>
+      <option value="7">July</option><option value="8">August</option>
+      <option value="9">September</option><option value="10">October</option>
+      <option value="11">November</option><option value="12">December</option>
+    </select>
+    <label>Year</label>
+    <input type="number" id="newMonthYear" value="2026" min="2020" max="2030">
+    <label>Copy items from previous month? <input type="checkbox" id="copyPrev" checked></label>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeNewMonthModal()">Cancel</button>
+      <button class="btn-primary" onclick="createNewMonth()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Debt Modal -->
+<div class="modal-overlay" id="addDebtModal" style="display:none" onclick="if(event.target===this)closeAddDebtModal()">
+  <div class="modal">
+    <h3>Add Credit Card / Debt</h3>
+    <label>Card Name</label>
+    <input type="text" id="debtName" placeholder="e.g. Card Nationwide">
+    <label>Current Balance (£)</label>
+    <input type="number" id="debtBalance" placeholder="e.g. 5000">
+    <label>Credit Limit (£)</label>
+    <input type="number" id="debtLimit" placeholder="e.g. 8000">
+    <label>Payoff Date (optional)</label>
+    <input type="month" id="debtDue">
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeAddDebtModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmAddDebt()">Add</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  PASSWORD GATE — change the password below
+// ============================================================
+const DASHBOARD_PASSWORD = "budget2026"; // ← change this to your preferred password
+
+function checkPassword() {
+  const input = document.getElementById('gateInput');
+  const error = document.getElementById('gateError');
+  if (input.value === DASHBOARD_PASSWORD) {
+    sessionStorage.setItem('budget_auth', '1');
+    document.getElementById('passwordGate').style.display = 'none';
+    input.value = '';
+  } else {
+    error.textContent = 'Incorrect password. Try again.';
+    input.classList.remove('shake');
+    void input.offsetWidth; // trigger reflow for animation restart
+    input.classList.add('shake');
+    input.value = '';
+    setTimeout(() => { input.classList.remove('shake'); error.textContent = ''; }, 1500);
+  }
+}
+
+// Auto-unlock if already authenticated this session
+if (sessionStorage.getItem('budget_auth') === '1') {
+  document.getElementById('passwordGate').style.display = 'none';
+}
+
+// Focus the password input on load
+window.addEventListener('DOMContentLoaded', () => {
+  const gate = document.getElementById('passwordGate');
+  if (gate.style.display !== 'none') {
+    document.getElementById('gateInput').focus();
+  }
+});
+
+// ============================================================
+//  HISTORICAL DATA (from your spreadsheet)
+// ============================================================
+const HISTORICAL = [
+  {month:"Apr 2025",income:3562,spend:6965.22,joint:2190,barclays:1368.22,amex:2100,monzo:1307},
+  {month:"May 2025",income:3562,spend:6873.22,joint:1650,barclays:1370.22,amex:2560,monzo:1293},
+  {month:"Jun 2025",income:3562,spend:6632.22,joint:1695,barclays:1370.22,amex:2410,monzo:1157},
+  {month:"Jul 2025",income:3562,spend:7227.22,joint:2250,barclays:1370.22,amex:2540,monzo:1067},
+  {month:"Aug 2025",income:3562,spend:7291.22,joint:2130,barclays:1504.22,amex:2500,monzo:1157},
+  {month:"Sep 2025",income:3562,spend:7073.22,joint:1925,barclays:1504.22,amex:2500,monzo:1144},
+  {month:"Oct 2025",income:3562,spend:6328.22,joint:1987,barclays:1102.22,amex:2300,monzo:939},
+  {month:"Nov 2025",income:3562,spend:6941.22,joint:1922,barclays:1680.22,amex:2400,monzo:939},
+  {month:"Dec 2025",income:3562,spend:7859.45,joint:1871,barclays:2441.45,amex:2575,monzo:972},
+  {month:"Jan 2026",income:3562,spend:7134.45,joint:1923,barclays:1936.45,amex:2200,monzo:1075},
+  {month:"Feb 2026",income:3562,spend:7020.45,joint:1926,barclays:1652.45,amex:2500,monzo:942},
+];
+
+// ============================================================
+//  SEED DATA — March 2026
+// ============================================================
+const SEED_MONTH = {
+  label: "March 2026",
+  income: 6714,
+  joint: [
+    {id:1,name:"Mortgage",budget:1385,paid:1385,isPaid:true},
+    {id:2,name:"Cleaners",budget:90,paid:90,isPaid:true},
+    {id:3,name:"Pet Insurance",budget:60,paid:60,isPaid:true},
+    {id:4,name:"Electricity",budget:100,paid:100,isPaid:true},
+    {id:5,name:"TV Licence",budget:15,paid:15,isPaid:true},
+  ],
+  barclays: [
+    {id:1,name:"Voneus",budget:30,paid:30,isPaid:true},
+    {id:2,name:"CMA",budget:926.45,paid:926,isPaid:true},
+    {id:3,name:"Council Tax",budget:390,paid:390,isPaid:true},
+    {id:4,name:"Card Santander",budget:118,paid:118,isPaid:true},
+    {id:5,name:"Card Virgin",budget:188,paid:188,isPaid:true},
+  ],
+  amex: [
+    {id:1,name:"AMEX Payment",budget:2000,paid:2000,isPaid:true},
+    {id:2,name:"Amex Purchases",budget:138,paid:138,isPaid:true},
+    {id:3,name:"Barclaycard",budget:331,paid:331,isPaid:true},
+  ],
+  monzo: [
+    {id:1,name:"Car Tax",budget:195,paid:195,isPaid:true},
+    {id:2,name:"Car",budget:647,paid:647,isPaid:true},
+    {id:3,name:"Royal London",budget:15,paid:15,isPaid:true},
+    {id:4,name:"Card Nationwide",budget:94,paid:94,isPaid:true},
+    {id:5,name:"Card Tesco",budget:81,paid:81,isPaid:true},
+    {id:6,name:"Mobile",budget:68,paid:68,isPaid:true},
+  ],
+  cards: [
+    {id:1,name:"Card Nationwide 1",balance:8790,limit:6430,due:"2028-02"},
+    {id:2,name:"Card Nationwide 2",balance:9479,limit:7700,due:"2028-12"},
+    {id:3,name:"Card Virgin",balance:8541,limit:7400,due:"2027-12"},
+    {id:4,name:"Card Santander",balance:11669,limit:10000,due:"2027-12"},
+  ],
+  amexTracker: {expenses:2573,balance:4586,monthlyBudget:1800},
+  sectionBalances: {joint:0,barclays:0,amex:0,monzo:0},
+  savings: {total:6734, expenditures:[{id:1,name:"Holiday",amount:4760},{id:2,name:"ASP",amount:200}]},
+  notes: ""
+};
+
+// ============================================================
+//  STATE
+// ============================================================
+const STORAGE_KEY = "budget_dashboard_v4";
+const EMBEDDED_STATE = /*SAVED_STATE_START*/null/*SAVED_STATE_END*/;
+let state = { currentMonth: "2026-03", months: {} };
+let trendChartInst = null, breakdownChartInst = null;
+let idCounters = {};
+
+function loadState() {
+  // 1. Try localStorage (fast in-session cache)
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) { state = JSON.parse(saved); return; }
+  } catch(e) {}
+  // 2. Fall back to state embedded by the Save button
+  if (EMBEDDED_STATE) { state = JSON.parse(JSON.stringify(EMBEDDED_STATE)); return; }
+  // 3. Default seed data
+  state.months["2026-03"] = JSON.parse(JSON.stringify(SEED_MONTH));
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function saveToFile() {
+  const stateJson = JSON.stringify(state);
+  const html = document.documentElement.outerHTML
+    .replace(/\/\*SAVED_STATE_START\*\/[\s\S]*?\/\*SAVED_STATE_END\*\//,
+             `/*SAVED_STATE_START*/${stateJson}/*SAVED_STATE_END*/`);
+  const blob = new Blob([html], {type: 'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'budget-dashboard.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function getMonth(key) { return state.months[key]; }
+function currentMonthData() { return getMonth(state.currentMonth); }
+
+function nextId(monthKey, section) {
+  const k = monthKey + "_" + section;
+  if (!idCounters[k]) {
+    const m = getMonth(monthKey);
+    idCounters[k] = m ? Math.max(0, ...m[section].map(i=>i.id)) + 1 : 1;
+  }
+  return idCounters[k]++;
+}
+
+// ============================================================
+//  MONTH NAVIGATION
+// ============================================================
+function monthKeyToLabel(key) {
+  const [y, m] = key.split("-");
+  const names = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
+  return names[parseInt(m)] + " " + y;
+}
+
+function monthLabelToKey(label) {
+  const names = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
+  const parts = label.split(" ");
+  const m = names.indexOf(parts[0]);
+  return parts[1] + "-" + String(m).padStart(2, "0");
+}
+
+function sortedMonthKeys() {
+  return Object.keys(state.months).sort();
+}
+
+function populateMonthSelect() {
+  const sel = document.getElementById("monthSelect");
+  sel.innerHTML = "";
+  sortedMonthKeys().forEach(key => {
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = monthKeyToLabel(key);
+    if (key === state.currentMonth) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
+function goToMonth(key) {
+  state.currentMonth = key;
+  saveState();
+  render();
+}
+
+function prevMonth() {
+  const keys = sortedMonthKeys();
+  const idx = keys.indexOf(state.currentMonth);
+  if (idx > 0) goToMonth(keys[idx - 1]);
+}
+
+function nextMonth() {
+  const keys = sortedMonthKeys();
+  const idx = keys.indexOf(state.currentMonth);
+  if (idx < keys.length - 1) goToMonth(keys[idx + 1]);
+}
+
+// ============================================================
+//  NEW MONTH MODAL
+// ============================================================
+function showNewMonthModal() {
+  const now = new Date();
+  document.getElementById("newMonthMonth").value = now.getMonth() + 1;
+  document.getElementById("newMonthYear").value = now.getFullYear();
+  document.getElementById("newMonthModal").style.display = "flex";
+}
+function closeNewMonthModal() { document.getElementById("newMonthModal").style.display = "none"; }
+
+function createNewMonth() {
+  const m = parseInt(document.getElementById("newMonthMonth").value);
+  const y = document.getElementById("newMonthYear").value;
+  const copyPrev = document.getElementById("copyPrev").checked;
+  const key = y + "-" + String(m).padStart(2, "0");
+  if (state.months[key]) { alert("That month already exists!"); return; }
+
+  let newData;
+  if (copyPrev) {
+    const keys = sortedMonthKeys();
+    const latestKey = keys[keys.length - 1];
+    const prev = getMonth(latestKey);
+    newData = JSON.parse(JSON.stringify(prev));
+    // Clear paid status
+    ["joint","barclays","amex","monzo"].forEach(s => newData[s].forEach(i => { i.isPaid = false; i.paid = 0; }));
+    newData.amexTracker = {expenses:0,balance:newData.amexTracker?.balance||0,monthlyBudget:newData.amexTracker?.monthlyBudget||1800};
+    newData.sectionBalances = {joint:0,barclays:0,amex:0,monzo:0};
+    newData.savings = prev.savings ? JSON.parse(JSON.stringify(prev.savings)) : {total:0,expenditures:[]};
+    newData.notes = "";
+  } else {
+    newData = { label:"", income:0, joint:[], barclays:[], amex:[], monzo:[], cards:[], amexTracker:{expenses:0,balance:0,monthlyBudget:1800}, sectionBalances:{joint:0,barclays:0,amex:0,monzo:0}, savings:{total:0,expenditures:[]}, notes:"" };
+  }
+  newData.label = monthKeyToLabel(key);
+  state.months[key] = newData;
+  state.currentMonth = key;
+  saveState();
+  closeNewMonthModal();
+  render();
+}
+
+// ============================================================
+//  RENDER
+// ============================================================
+function render() {
+  const md = currentMonthData();
+  if (!md) { document.getElementById("kpiRow").innerHTML = '<div style="color:#ef4444;padding:20px">No data for this month.</div>'; return; }
+  populateMonthSelect();
+  renderKPIs(md);
+  renderSections(md);
+  renderAmexCard(md);
+  renderDebt(md);
+  renderSavings(md);
+  renderNotes(md);
+  renderCharts(md);
+}
+
+// ---- KPIs ----
+function sectionRemainder(items, balance) {
+  const unpaid = items.filter(i => !i.isPaid).reduce((a,i) => a + (i.budget||0), 0);
+  return balance - unpaid;
+}
+
+function renderKPIs(md) {
+  const totalBudget = totalSection(md.joint) + totalSection(md.barclays) + totalSection(md.amex) + totalSection(md.monzo);
+  const totalPaid = paidSection(md.joint) + paidSection(md.barclays) + paidSection(md.amex) + paidSection(md.monzo);
+  const pct = totalBudget > 0 ? Math.round((totalPaid / totalBudget) * 100) : 0;
+  const bal = md.sectionBalances || {joint:0,barclays:0,amex:0,monzo:0};
+  const surplus = sectionRemainder(md.joint, bal.joint||0)
+                + sectionRemainder(md.barclays, bal.barclays||0)
+                + sectionRemainder(md.monzo, bal.monzo||0);
+  const surplusClass = surplus >= 0 ? "net-pos" : "net-neg";
+
+  document.getElementById("kpiRow").innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">Monthly Income</div>
+      <div><input class="income-edit" type="number" value="${md.income}" onchange="updateIncome(this.value)" title="Click to edit income"></div>
+      <div class="kpi-sub">Click to edit</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Budgeted</div>
+      <div class="kpi-value spend">£${fmt(totalBudget)}</div>
+      <div class="kpi-sub">Across all sections</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Paid</div>
+      <div class="kpi-value ${pct === 100 ? 'income' : 'blue'}">£${fmt(totalPaid)}</div>
+      <div class="kpi-sub">${pct}% of budgeted</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Surplus</div>
+      <div class="kpi-value ${surplusClass}">${surplus >= 0 ? '+' : '−'}£${fmt(Math.abs(surplus))}</div>
+      <div class="kpi-sub">Sum of section remainders</div>
+    </div>
+  `;
+}
+
+function updateIncome(val) {
+  currentMonthData().income = parseFloat(val) || 0;
+  saveState();
+  renderKPIs(currentMonthData());
+  renderCharts(currentMonthData());
+}
+
+// ---- Sections ----
+const SECTION_META = {
+  joint:    {label:"Joint",    color:"#3ea6ff"},
+  barclays: {label:"Barclays", color:"#a78bfa"},
+  amex:     {label:"AMEX",     color:"#ff4e45"},
+  monzo:    {label:"Monzo",    color:"#ff9500"},
+};
+
+function totalSection(items) { return items.reduce((a,i) => a + (i.budget||0), 0); }
+function paidSection(items)  { return items.reduce((a,i) => a + (i.paid||0),   0); }
+
+function updateSectionBalance(sectionKey, val) {
+  const md = currentMonthData();
+  if (!md.sectionBalances) md.sectionBalances = {joint:0,barclays:0,amex:0,monzo:0};
+  md.sectionBalances[sectionKey] = parseFloat(val)||0;
+  saveState();
+  renderSections(md);
+}
+
+function renderSections(md) {
+  const grid = document.getElementById("sectionsGrid");
+  const balances = md.sectionBalances || {joint:0,barclays:0,amex:0,monzo:0};
+  grid.innerHTML = ["joint","barclays","amex","monzo"].map(s => renderSection(s, md[s], balances[s]||0)).join("");
+}
+
+function renderSection(sectionKey, items, balance) {
+  const meta = SECTION_META[sectionKey];
+  const total    = totalSection(items);
+  const paid     = paidSection(items);
+  const pct      = total > 0 ? Math.min(100, (paid/total)*100) : 0;
+  const allPaid  = items.length > 0 && items.every(i => i.isPaid);
+  const unpaid   = items.filter(i => !i.isPaid).reduce((a,i) => a + (i.budget||0), 0);
+  const remainder = balance - unpaid;
+  const remColor  = remainder >= 0 ? "#2ba640" : "#ff4e45";
+
+  const rows = items.map(item => `
+    <div class="item-row ${item.isPaid ? 'is-paid' : ''}" id="item_${sectionKey}_${item.id}">
+      <input type="checkbox" class="item-checkbox" ${item.isPaid ? 'checked' : ''} onchange="togglePaid('${sectionKey}',${item.id},this.checked)">
+      <input class="item-name" value="${escHtml(item.name)}" onchange="updateItemField('${sectionKey}',${item.id},'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="${item.budget}" onchange="updateItemField('${sectionKey}',${item.id},'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt ${item.paid > 0 ? 'paid-color' : 'unpaid-color'}" type="number" value="${item.paid||0}" onchange="updateItemField('${sectionKey}',${item.id},'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('${sectionKey}',${item.id})" title="Delete">✕</button>
+    </div>
+  `).join("");
+
+  return `
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title" style="color:${meta.color}">${meta.label}</div>
+        <div class="section-totals">
+          <div class="section-total">£${fmt(total)}</div>
+          <div class="section-paid-badge ${allPaid ? 'badge-green' : 'badge-yellow'}">${allPaid ? '✓ All paid' : '£'+fmt(paid)+' paid'}</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${meta.color}"></div></div>
+      <div class="col-headers">
+        <span></span>
+        <span class="col-hdr">Item</span>
+        <span class="col-hdr right">Budget</span>
+        <span class="col-hdr right">Paid</span>
+        <span></span>
+      </div>
+      <div class="items-table">${rows}</div>
+      <div class="section-footer">
+        <span class="section-footer-label">Total</span>
+        <span class="section-footer-total">£${fmt(total)}</span>
+        <span class="section-footer-paid" style="color:${meta.color}">£${fmt(paid)}</span>
+        <span></span>
+      </div>
+      ${sectionKey !== 'amex' ? `
+      <div class="section-balance-row">
+        <span class="section-balance-label">Balance</span>
+        <input type="number" class="section-balance-input" value="${balance}"
+          onchange="updateSectionBalance('${sectionKey}',this.value)"
+          style="color:${meta.color}">
+      </div>
+      <div class="section-remainder-row">
+        <span class="section-remainder-label">Remainder</span>
+        <span class="section-remainder-value" style="color:${remColor}">£${fmt(remainder)}</span>
+      </div>` : ''}
+      <div class="add-item-row">
+        <button class="btn-add-item" onclick="addItem('${sectionKey}')">+ Add item to ${meta.label}</button>
+      </div>
+    </div>
+  `;
+}
+
+// ---- AMEX Card Tracker ----
+function renderAmexCard(md) {
+  const t = Object.assign({expenses:0,balance:0,monthlyBudget:1800}, md.amexTracker||{});
+  const balMinusExp = t.balance - t.expenses;
+  const budgetRemaining = t.monthlyBudget - balMinusExp;
+  const balColor = balMinusExp >= 0 ? "#3ea6ff" : "#ff4e45";
+  const budgetColor = budgetRemaining >= 0 ? "#2ba640" : "#ff4e45";
+
+  document.getElementById("amexCard").innerHTML = `
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#ff4e45">AMEX Card</span>
+    </div>
+    <div class="side-card-body">
+      ${amexEditRow("Total Balance", t.balance, "balance", "#f1f1f1")}
+      ${amexEditRow("Expenses", t.expenses, "expenses")}
+      ${amexCalcRow("Balance − Expenses", balMinusExp, balColor)}
+      <div style="border-top:1px solid #272727;margin:6px 0"></div>
+      ${amexEditRow("Monthly Budget", t.monthlyBudget, "monthlyBudget", "#717171")}
+      ${amexCalcRow("Budget Remaining", budgetRemaining, budgetColor)}
+    </div>
+  `;
+}
+
+function amexEditRow(label, val, field, color) {
+  color = color || "#1C1C1E";
+  return `<div class="amex-row">
+    <span class="amex-key">${label}</span>
+    <input type="number" value="${val}"
+      style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:${color};font-family:inherit;"
+      onchange="updateAmex('${field}',this.value)">
+  </div>`;
+}
+
+function amexCalcRow(label, val, color) {
+  return `<div class="amex-row">
+    <span class="amex-key">${label}</span>
+    <span style="font-size:14px;font-weight:700;color:${color}">£${fmt(val)}</span>
+  </div>`;
+}
+
+function updateAmex(field, val) {
+  currentMonthData().amexTracker[field] = parseFloat(val)||0;
+  saveState();
+  renderAmexCard(currentMonthData());
+}
+
+// ---- Debt ----
+function renderDebt(md) {
+  const cards = md.cards || [];
+  const totalDebt = cards.reduce((a,c)=>a+(c.balance||0),0);
+
+  const rows = cards.map(c => {
+    const pct = c.limit > 0 ? Math.min(100,(c.balance/c.limit)*100) : 0;
+    return `
+      <div class="debt-item">
+        <div class="debt-row">
+          <input style="background:transparent;border:none;border-bottom:1px dashed #334155;color:#e2e8f0;font-size:13px;outline:none;flex:1;"
+            value="${escHtml(c.name)}" onchange="updateDebtField(${c.id},'name',this.value)">
+          <button class="debt-delete" onclick="deleteDebt(${c.id})">✕</button>
+        </div>
+        <div class="debt-row" style="margin-top:4px">
+          <span style="font-size:11px;color:#64748b">Balance</span>
+          <input type="number" class="debt-edit-input" value="${c.balance}" onchange="updateDebtField(${c.id},'balance',parseFloat(this.value)||0)" style="width:90px;text-align:right;color:#ef4444">
+        </div>
+        <div class="debt-meta">
+          <span>Limit: £${fmt(c.limit||0)}</span>
+          <span>${c.due ? 'Deal End: '+c.due : ''}</span>
+        </div>
+        <div class="debt-progress"><div class="debt-progress-fill" style="width:${pct}%"></div></div>
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById("debtCard").innerHTML = `
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#ff4e45">Credit Cards</span>
+    </div>
+    <div class="side-card-body">
+      ${rows || '<div class="empty-state">No debt cards added</div>'}
+      <div class="debt-total-row">
+        <span class="debt-total-label">Total Debt</span>
+        <span class="debt-total-val">£${fmt(totalDebt)}</span>
+      </div>
+      <button class="btn-add-debt" onclick="showAddDebtModal()">+ Add card / debt</button>
+    </div>
+  `;
+}
+
+function updateDebtField(id, field, val) {
+  const md = currentMonthData();
+  const card = md.cards.find(c=>c.id===id);
+  if (card) { card[field] = val; saveState(); renderDebt(md); renderKPIs(md); }
+}
+
+function deleteDebt(id) {
+  const md = currentMonthData();
+  md.cards = md.cards.filter(c=>c.id!==id);
+  saveState(); render();
+}
+
+function showAddDebtModal() { document.getElementById("addDebtModal").style.display="flex"; }
+function closeAddDebtModal() { document.getElementById("addDebtModal").style.display="none"; }
+
+function confirmAddDebt() {
+  const md = currentMonthData();
+  const maxId = md.cards.length ? Math.max(...md.cards.map(c=>c.id)) : 0;
+  md.cards.push({
+    id: maxId+1,
+    name: document.getElementById("debtName").value || "New Card",
+    balance: parseFloat(document.getElementById("debtBalance").value)||0,
+    limit: parseFloat(document.getElementById("debtLimit").value)||0,
+    due: document.getElementById("debtDue").value || ""
+  });
+  saveState();
+  closeAddDebtModal();
+  render();
+}
+
+// ---- Savings ----
+function normaliseSavings(s) {
+  // Migrate old format {bonus,holiday,asp,remainder} → new format
+  if (s && !s.hasOwnProperty('expenditures')) {
+    const total = (s.bonus||0) + (s.holiday||0) + (s.asp||0) + (s.remainder||0);
+    const exps = [];
+    if (s.holiday) exps.push({id:1,name:"Holiday",amount:s.holiday});
+    if (s.asp)     exps.push({id:2,name:"ASP",amount:s.asp});
+    return {total, expenditures:exps};
+  }
+  return s || {total:0, expenditures:[]};
+}
+
+function renderSavings(md) {
+  const s = normaliseSavings(md.savings);
+  md.savings = s; // ensure migrated
+  const expTotal = s.expenditures.reduce((a,e)=>a+(e.amount||0),0);
+  const remainder = s.total - expTotal;
+  const remColor = remainder >= 0 ? "#10b981" : "#ef4444";
+
+  const expRows = s.expenditures.map(e => `
+    <div class="saving-exp-row">
+      <input class="saving-exp-name" value="${escHtml(e.name)}" onchange="updateSavingExp(${e.id},'name',this.value)" placeholder="Label">
+      <input type="number" class="saving-exp-amt" value="${e.amount}" onchange="updateSavingExp(${e.id},'amount',parseFloat(this.value)||0)">
+      <button class="saving-exp-del" onclick="deleteSavingExp(${e.id})">✕</button>
+    </div>
+  `).join("");
+
+  document.getElementById("savingsCard").innerHTML = `
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#2ba640">Savings & Funds</span>
+    </div>
+    <div class="side-card-body">
+      <div class="savings-total-row">
+        <span class="savings-total-label">Total Savings</span>
+        <input type="number" class="savings-total-input" value="${s.total}" onchange="updateSavingTotal(this.value)">
+      </div>
+      <div class="savings-exp-header">Planned Expenditure</div>
+      ${expRows || '<div style="font-size:12px;color:#475569;padding:4px 0 8px">No items yet</div>'}
+      <button class="btn-add-saving" onclick="addSavingExp()">+ Add expenditure</button>
+      <div class="savings-remainder-row">
+        <span class="savings-remainder-label">Remainder</span>
+        <span style="font-size:20px;font-weight:800;color:${remColor}">£${fmt(Math.abs(remainder))}${remainder < 0 ? ' over' : ''}</span>
+      </div>
+    </div>
+  `;
+}
+
+function updateSavingTotal(val) {
+  const md = currentMonthData();
+  md.savings = normaliseSavings(md.savings);
+  md.savings.total = parseFloat(val)||0;
+  saveState(); renderSavings(md);
+}
+
+function updateSavingExp(id, field, val) {
+  const md = currentMonthData();
+  md.savings = normaliseSavings(md.savings);
+  const exp = md.savings.expenditures.find(e=>e.id===id);
+  if (exp) { exp[field] = val; saveState(); renderSavings(md); }
+}
+
+function addSavingExp() {
+  const md = currentMonthData();
+  md.savings = normaliseSavings(md.savings);
+  const maxId = md.savings.expenditures.length ? Math.max(...md.savings.expenditures.map(e=>e.id)) : 0;
+  md.savings.expenditures.push({id:maxId+1, name:"New item", amount:0});
+  saveState(); renderSavings(md);
+}
+
+function deleteSavingExp(id) {
+  const md = currentMonthData();
+  md.savings = normaliseSavings(md.savings);
+  md.savings.expenditures = md.savings.expenditures.filter(e=>e.id!==id);
+  saveState(); renderSavings(md);
+}
+
+// ---- Notes ----
+function renderNotes(md) {
+  document.getElementById("notesArea").value = md.notes || "";
+}
+function saveNotes(val) { currentMonthData().notes = val; saveState(); }
+
+// ============================================================
+//  ITEM ACTIONS
+// ============================================================
+function addItem(section) {
+  const md = currentMonthData();
+  const newId = md[section].length ? Math.max(...md[section].map(i=>i.id)) + 1 : 1;
+  md[section].push({id:newId, name:"New item", budget:0, paid:0, isPaid:false});
+  saveState();
+  renderSections(md);
+}
+
+function deleteItem(section, id) {
+  const md = currentMonthData();
+  md[section] = md[section].filter(i => i.id !== id);
+  saveState();
+  render();
+}
+
+function togglePaid(section, id, checked) {
+  const md = currentMonthData();
+  const item = md[section].find(i => i.id === id);
+  if (!item) return;
+  item.isPaid = checked;
+  item.paid = checked ? item.budget : 0;
+  saveState();
+  render();
+}
+
+function updateItemField(section, id, field, value) {
+  const md = currentMonthData();
+  const item = md[section].find(i => i.id === id);
+  if (!item) return;
+  item[field] = value;
+  if (field === 'paid') { item.isPaid = value > 0 && value >= item.budget; }
+  if (field === 'budget' && item.isPaid) { item.paid = value; }
+  saveState();
+  renderKPIs(md);
+  renderSections(md);
+  renderCharts(md);
+}
+
+// ============================================================
+//  CHARTS
+// ============================================================
+function renderCharts(md) {
+  // Build 12-month data (historical + current)
+  const hist = [...HISTORICAL];
+  const curKey = state.currentMonth;
+  const curLabel = monthKeyToLabel(curKey);
+  // Remove if already in historical, replace with live
+  const filteredHist = hist.filter(h => h.month !== curLabel);
+  const liveCur = {
+    month: curLabel,
+    income: md.income,
+    spend: totalSection(md.joint)+totalSection(md.barclays)+totalSection(md.amex)+totalSection(md.monzo),
+    joint: totalSection(md.joint),
+    barclays: totalSection(md.barclays),
+    amex: totalSection(md.amex),
+    monzo: totalSection(md.monzo),
+  };
+  const chartData = [...filteredHist.slice(-11), liveCur];
+
+  // Trend chart
+  const trendCtx = document.getElementById("trendChart").getContext("2d");
+  if (trendChartInst) trendChartInst.destroy();
+  trendChartInst = new Chart(trendCtx, {
+    type: "line",
+    data: {
+      labels: chartData.map(d=>d.month),
+      datasets: [
+        {label:"Income", data:chartData.map(d=>d.income), borderColor:"#2ba640", backgroundColor:"rgba(43,166,64,0.08)",  tension:0.3, fill:true, pointRadius:3},
+        {label:"Spend",  data:chartData.map(d=>d.spend),  borderColor:"#ff4e45", backgroundColor:"rgba(255,78,69,0.08)",   tension:0.3, fill:true, pointRadius:3},
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:"#aaaaaa",font:{size:11}},position:"top"}},
+      scales:{
+        x:{ticks:{color:"#717171",font:{size:10}},grid:{color:"#1a1a1a"}},
+        y:{ticks:{color:"#717171",font:{size:10},callback:v=>"£"+fmt(v)},grid:{color:"#1a1a1a"}}
+      }
+    }
+  });
+
+  // Breakdown donut
+  const breakdown = [
+    {label:"Joint",    val:totalSection(md.joint),    color:"#3ea6ff"},
+    {label:"Barclays", val:totalSection(md.barclays), color:"#a78bfa"},
+    {label:"AMEX",     val:totalSection(md.amex),     color:"#ff4e45"},
+    {label:"Monzo",    val:totalSection(md.monzo),    color:"#ff9500"},
+  ];
+  const bCtx = document.getElementById("breakdownChart").getContext("2d");
+  if (breakdownChartInst) breakdownChartInst.destroy();
+  breakdownChartInst = new Chart(bCtx, {
+    type:"doughnut",
+    data:{
+      labels:breakdown.map(b=>b.label),
+      datasets:[{data:breakdown.map(b=>b.val), backgroundColor:breakdown.map(b=>b.color), borderWidth:0, hoverOffset:4}]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>" £"+fmt(ctx.raw)+" ("+Math.round(ctx.raw/breakdown.reduce((a,b)=>a+b.val,0)*100)+"%)" }}}
+    }
+  });
+
+  // Legend
+  const total = breakdown.reduce((a,b)=>a+b.val,0);
+  document.getElementById("breakdownLegend").innerHTML = breakdown.map(b=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:12px;height:12px;border-radius:3px;background:${b.color};flex-shrink:0"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#f1f5f9">${b.label}</div>
+        <div style="font-size:11px;color:#64748b">£${fmt(b.val)} · ${total>0?Math.round(b.val/total*100):0}%</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+// ============================================================
+//  HELPERS
+// ============================================================
+function fmt(n) { return (Math.round((n||0)*100)/100).toLocaleString("en-GB",{minimumFractionDigits:0,maximumFractionDigits:2}); }
+function escHtml(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+// ============================================================
+//  INIT
+// ============================================================
+loadState();
+render();
+</script>
+</body>
+</html>
