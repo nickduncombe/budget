@@ -363,17 +363,17 @@
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Total Budgeted</div>
-      <div class="kpi-value spend">£5,647.83</div>
+      <div class="kpi-value spend">£6,081.83</div>
       <div class="kpi-sub">Across all sections</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Total Paid</div>
-      <div class="kpi-value blue">£0</div>
-      <div class="kpi-sub">0% of budgeted</div>
+      <div class="kpi-value blue">£2,234</div>
+      <div class="kpi-sub">37% of budgeted</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Surplus</div>
-      <div class="kpi-value net-neg">−£3,847.83</div>
+      <div class="kpi-value net-pos">+£363.17</div>
       <div class="kpi-sub">Sum of section remainders</div>
     </div>
   </div>
@@ -449,11 +449,11 @@
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('joint',this.value)" style="color:#3ea6ff">
+        <input type="number" class="section-balance-input" value="1650" onchange="updateSectionBalance('joint',this.value)" style="color:#3ea6ff">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
-        <span class="section-remainder-value" style="color:#ff4e45">£-1,650</span>
+        <span class="section-remainder-value" style="color:#2ba640">£0</span>
       </div>
       <div class="add-item-row">
         <button class="btn-add-item" onclick="addItem('joint')">+ Add item to Joint</button>
@@ -511,7 +511,7 @@
   
     <div class="item-row " id="item_barclays_6">
       <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',6,this.checked)">
-      <input class="item-name" value="Card Nationwide" onchange="updateItemField('barclays',6,'name',this.value)" placeholder="Item name">
+      <input class="item-name" value="Nationwide" onchange="updateItemField('barclays',6,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="94" onchange="updateItemField('barclays',6,'budget',parseFloat(this.value)||0)" title="Budget amount">
       <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('barclays',6)" title="Delete">✕</button>
@@ -526,11 +526,11 @@
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('barclays',this.value)" style="color:#a78bfa">
+        <input type="number" class="section-balance-input" value="1619" onchange="updateSectionBalance('barclays',this.value)" style="color:#a78bfa">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
-        <span class="section-remainder-value" style="color:#ff4e45">£-1,380.83</span>
+        <span class="section-remainder-value" style="color:#2ba640">£238.17</span>
       </div>
       <div class="add-item-row">
         <button class="btn-add-item" onclick="addItem('barclays')">+ Add item to Barclays</button>
@@ -541,11 +541,11 @@
       <div class="section-header">
         <div class="section-title" style="color:#ff4e45">AMEX</div>
         <div class="section-totals">
-          <div class="section-total">£1,800</div>
-          <div class="section-paid-badge badge-yellow">£0 paid</div>
+          <div class="section-total">£2,234</div>
+          <div class="section-paid-badge badge-green">✓ All paid</div>
         </div>
       </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#ff4e45"></div></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#ff4e45"></div></div>
       <div class="col-headers">
         <span></span>
         <span class="col-hdr">Item</span>
@@ -554,18 +554,18 @@
         <span></span>
       </div>
       <div class="items-table">
-    <div class="item-row " id="item_amex_1">
-      <input type="checkbox" class="item-checkbox" onchange="togglePaid('amex',1,this.checked)">
+    <div class="item-row is-paid" id="item_amex_1">
+      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('amex',1,this.checked)">
       <input class="item-name" value="AMEX Payment" onchange="updateItemField('amex',1,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="1800" onchange="updateItemField('amex',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('amex',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-amount" type="number" value="2234" onchange="updateItemField('amex',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt paid-color" type="number" value="2234" onchange="updateItemField('amex',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('amex',1)" title="Delete">✕</button>
     </div>
   </div>
       <div class="section-footer">
         <span class="section-footer-label">Total</span>
-        <span class="section-footer-total">£1,800</span>
-        <span class="section-footer-paid" style="color:#ff4e45">£0</span>
+        <span class="section-footer-total">£2,234</span>
+        <span class="section-footer-paid" style="color:#ff4e45">£2,234</span>
         <span></span>
       </div>
       
@@ -632,11 +632,11 @@
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('monzo',this.value)" style="color:#ff9500">
+        <input type="number" class="section-balance-input" value="942" onchange="updateSectionBalance('monzo',this.value)" style="color:#ff9500">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
-        <span class="section-remainder-value" style="color:#ff4e45">£-817</span>
+        <span class="section-remainder-value" style="color:#2ba640">£125</span>
       </div>
       <div class="add-item-row">
         <button class="btn-add-item" onclick="addItem('monzo')">+ Add item to Monzo</button>
@@ -658,7 +658,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#3ea6ff;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Joint</div>
-        <div style="font-size:11px;color:#64748b">£1,650 · 29%</div>
+        <div style="font-size:11px;color:#64748b">£1,650 · 27%</div>
       </div>
     </div>
   
@@ -666,7 +666,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#a78bfa;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Barclays</div>
-        <div style="font-size:11px;color:#64748b">£1,380.83 · 24%</div>
+        <div style="font-size:11px;color:#64748b">£1,380.83 · 23%</div>
       </div>
     </div>
   
@@ -674,7 +674,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#ff4e45;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">AMEX</div>
-        <div style="font-size:11px;color:#64748b">£1,800 · 32%</div>
+        <div style="font-size:11px;color:#64748b">£2,234 · 37%</div>
       </div>
     </div>
   
@@ -682,7 +682,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#ff9500;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Monzo</div>
-        <div style="font-size:11px;color:#64748b">£817 · 14%</div>
+        <div style="font-size:11px;color:#64748b">£817 · 13%</div>
       </div>
     </div>
   </div>
@@ -704,11 +704,11 @@
   </div>
       <div class="amex-row">
     <span class="amex-key">Expenses</span>
-    <input type="number" value="0" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#1C1C1E;font-family:inherit;" onchange="updateAmex('expenses',this.value)">
+    <input type="number" value="3390" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#1C1C1E;font-family:inherit;" onchange="updateAmex('expenses',this.value)">
   </div>
       <div class="amex-row">
     <span class="amex-key">Balance − Expenses</span>
-    <span style="font-size:14px;font-weight:700;color:#3ea6ff">£4,608</span>
+    <span style="font-size:14px;font-weight:700;color:#3ea6ff">£1,218</span>
   </div>
       <div style="border-top:1px solid #272727;margin:6px 0"></div>
       <div class="amex-row">
@@ -717,7 +717,7 @@
   </div>
       <div class="amex-row">
     <span class="amex-key">Budget Remaining</span>
-    <span style="font-size:14px;font-weight:700;color:#ff4e45">£-2,808</span>
+    <span style="font-size:14px;font-weight:700;color:#2ba640">£582</span>
   </div>
     </div>
   </div>
@@ -985,7 +985,7 @@ const SEED_MONTH = {
 //  STATE
 // ============================================================
 const STORAGE_KEY = "budget_dashboard_v4";
-const EMBEDDED_STATE = /*SAVED_STATE_START*/{"currentMonth":"2026-05","months":{"2026-03":{"label":"March 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":1385,"isPaid":true},{"id":2,"name":"Cleaners","budget":90,"paid":90,"isPaid":true},{"id":3,"name":"Pet Insurance","budget":60,"paid":60,"isPaid":true},{"id":4,"name":"Electricity","budget":100,"paid":100,"isPaid":true},{"id":5,"name":"TV Licence","budget":15,"paid":15,"isPaid":true}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":30,"isPaid":true},{"id":2,"name":"CMA","budget":926.45,"paid":926,"isPaid":true},{"id":3,"name":"Council Tax","budget":390,"paid":390,"isPaid":true},{"id":4,"name":"Card Santander","budget":118,"paid":118,"isPaid":true},{"id":5,"name":"Card Virgin","budget":188,"paid":188,"isPaid":true}],"amex":[{"id":1,"name":"AMEX Payment","budget":2000,"paid":2000,"isPaid":true},{"id":2,"name":"Amex Purchases","budget":138,"paid":138,"isPaid":true},{"id":3,"name":"Barclaycard","budget":331,"paid":331,"isPaid":true}],"monzo":[{"id":1,"name":"Car Tax","budget":195,"paid":195,"isPaid":true},{"id":2,"name":"Car","budget":647,"paid":647,"isPaid":true},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":4,"name":"Card Nationwide","budget":94,"paid":94,"isPaid":true},{"id":5,"name":"Card Tesco","budget":81,"paid":81,"isPaid":true},{"id":6,"name":"Mobile","budget":68,"paid":68,"isPaid":true}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":2573,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-04":{"label":"April 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":2234,"paid":2234,"isPaid":true}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":3390,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1619,"amex":0,"monzo":942},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-05":{"label":"May 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-06":{"label":"June 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":7,"name":"Council Tax","budget":410,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1790,"amex":0,"monzo":817},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""}}}/*SAVED_STATE_END*/;
+const EMBEDDED_STATE = /*SAVED_STATE_START*/{"currentMonth":"2026-04","months":{"2026-03":{"label":"March 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":1385,"isPaid":true},{"id":2,"name":"Cleaners","budget":90,"paid":90,"isPaid":true},{"id":3,"name":"Pet Insurance","budget":60,"paid":60,"isPaid":true},{"id":4,"name":"Electricity","budget":100,"paid":100,"isPaid":true},{"id":5,"name":"TV Licence","budget":15,"paid":15,"isPaid":true}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":30,"isPaid":true},{"id":2,"name":"CMA","budget":926.45,"paid":926,"isPaid":true},{"id":3,"name":"Council Tax","budget":390,"paid":390,"isPaid":true},{"id":4,"name":"Card Santander","budget":118,"paid":118,"isPaid":true},{"id":5,"name":"Card Virgin","budget":188,"paid":188,"isPaid":true}],"amex":[{"id":1,"name":"AMEX Payment","budget":2000,"paid":2000,"isPaid":true},{"id":2,"name":"Amex Purchases","budget":138,"paid":138,"isPaid":true},{"id":3,"name":"Barclaycard","budget":331,"paid":331,"isPaid":true}],"monzo":[{"id":1,"name":"Car Tax","budget":195,"paid":195,"isPaid":true},{"id":2,"name":"Car","budget":647,"paid":647,"isPaid":true},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":4,"name":"Card Nationwide","budget":94,"paid":94,"isPaid":true},{"id":5,"name":"Card Tesco","budget":81,"paid":81,"isPaid":true},{"id":6,"name":"Mobile","budget":68,"paid":68,"isPaid":true}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":2573,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-04":{"label":"April 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":2234,"paid":2234,"isPaid":true}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":3390,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1619,"amex":0,"monzo":942},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-05":{"label":"May 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-06":{"label":"June 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":7,"name":"Council Tax","budget":410,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1790,"amex":0,"monzo":817},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""}}}/*SAVED_STATE_END*/;
 let state = { currentMonth: "2026-03", months: {} };
 let trendChartInst = null, breakdownChartInst = null;
 let idCounters = {};
@@ -1707,4 +1707,4 @@ render();
 </script>
 
 
-</body><div id="a9210aea-44f9-47ad-aec9-e6208a17f847" style="all: initial;"></div></html>
+<div id="a9210aea-44f9-47ad-aec9-e6208a17f847" style="all: initial;"></div></body></html>
