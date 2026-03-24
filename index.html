@@ -1,4 +1,4 @@
-<html lang="en"><head>
+<html lang="en" coupert-item="9AF8D9A4E502F3784AD24272D81F0381"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Budget Dashboard</title>
@@ -242,7 +242,62 @@
   .gh-note { font-size: 11px; color: #717171; margin-top: 14px; line-height: 1.5; }
   .gh-note a { color: #3ea6ff; text-decoration: none; }
 </style>
-</head>
+<style>
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Regular.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Regular.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Regular.ttf);
+            unicode-range: U+61-7a;
+        }
+        
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Medium.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Medium.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Medium.ttf);
+            unicode-range: U+61-7a;
+        }
+
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Bold.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Bold.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Bold.ttf);
+            unicode-range: U+61-7a;
+        }
+     
+    </style></head>
 <body>
 
 <!-- Password Gate -->
@@ -289,11 +344,11 @@
   <div class="header-title">💷 <span>Budget</span> Dashboard</div>
   <div class="month-nav">
     <button onclick="prevMonth()" title="Previous month">‹</button>
-    <select class="month-select" id="monthSelect" onchange="goToMonth(this.value)"><option value="2026-03">March 2026</option></select>
+    <select class="month-select" id="monthSelect" onchange="goToMonth(this.value)"><option value="2026-03">March 2026</option><option value="2026-04">April 2026</option></select>
     <button onclick="nextMonth()" title="Next month">›</button>
     <button class="btn-new" onclick="showNewMonthModal()">+ New Month</button>
     <button id="syncBtn" onclick="syncToGitHub()" style="background: rgb(62, 166, 255); border: medium; color: rgb(15, 15, 15); padding: 7px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 700; font-family: inherit; transition: opacity 0.15s; opacity: 0.6;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" title="Save &amp; sync to GitHub" disabled="">⏳ Syncing…</button>
-    <button onclick="showGitHubSettings()" style="background:#272727;border:1px solid #3f3f3f;color:#aaaaaa;padding:7px 10px;border-radius:6px;cursor:pointer;font-size:14px;font-family:inherit;transition:background 0.15s;" onmouseover="this.style.background='#3f3f3f'" onmouseout="this.style.background='#272727'" title="GitHub settings">⚙️</button>
+    <button onclick="showGitHubSettings()" style="background: rgb(39, 39, 39); border: 1px solid rgb(63, 63, 63); color: rgb(170, 170, 170); padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 14px; font-family: inherit; transition: background 0.15s;" onmouseover="this.style.background='#3f3f3f'" onmouseout="this.style.background='#272727'" title="GitHub settings">⚙️</button>
   </div>
 </div>
 
@@ -308,17 +363,17 @@
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Total Budgeted</div>
-      <div class="kpi-value spend">£6,871.45</div>
+      <div class="kpi-value spend">£6,075.83</div>
       <div class="kpi-sub">Across all sections</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Total Paid</div>
-      <div class="kpi-value income">£6,871</div>
-      <div class="kpi-sub">100% of budgeted</div>
+      <div class="kpi-value blue">£2,234</div>
+      <div class="kpi-sub">37% of budgeted</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Surplus</div>
-      <div class="kpi-value net-pos">+£0</div>
+      <div class="kpi-value net-pos">+£369.17</div>
       <div class="kpi-sub">Sum of section remainders</div>
     </div>
   </div>
@@ -333,10 +388,10 @@
         <div class="section-title" style="color:#3ea6ff">Joint</div>
         <div class="section-totals">
           <div class="section-total">£1,650</div>
-          <div class="section-paid-badge badge-green">✓ All paid</div>
+          <div class="section-paid-badge badge-yellow">£0 paid</div>
         </div>
       </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#3ea6ff"></div></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#3ea6ff"></div></div>
       <div class="col-headers">
         <span></span>
         <span class="col-hdr">Item</span>
@@ -345,56 +400,64 @@
         <span></span>
       </div>
       <div class="items-table">
-    <div class="item-row is-paid" id="item_joint_1">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('joint',1,this.checked)">
+    <div class="item-row " id="item_joint_1">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',1,this.checked)">
       <input class="item-name" value="Mortgage" onchange="updateItemField('joint',1,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="1385" onchange="updateItemField('joint',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="1385" onchange="updateItemField('joint',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('joint',1)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_joint_2">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('joint',2,this.checked)">
+    <div class="item-row " id="item_joint_2">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',2,this.checked)">
       <input class="item-name" value="Cleaners" onchange="updateItemField('joint',2,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="90" onchange="updateItemField('joint',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="90" onchange="updateItemField('joint',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('joint',2)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_joint_3">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('joint',3,this.checked)">
+    <div class="item-row " id="item_joint_3">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',3,this.checked)">
       <input class="item-name" value="Pet Insurance" onchange="updateItemField('joint',3,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="60" onchange="updateItemField('joint',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="60" onchange="updateItemField('joint',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('joint',3)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_joint_4">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('joint',4,this.checked)">
+    <div class="item-row " id="item_joint_4">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',4,this.checked)">
       <input class="item-name" value="Electricity" onchange="updateItemField('joint',4,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="100" onchange="updateItemField('joint',4,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="100" onchange="updateItemField('joint',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('joint',4)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_joint_5">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('joint',5,this.checked)">
+    <div class="item-row " id="item_joint_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',5,this.checked)">
       <input class="item-name" value="TV Licence" onchange="updateItemField('joint',5,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="15" onchange="updateItemField('joint',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="15" onchange="updateItemField('joint',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('joint',5)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_joint_6">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',6,this.checked)">
+      <input class="item-name" value="New item" onchange="updateItemField('joint',6,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="0" onchange="updateItemField('joint',6,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',6)" title="Delete">✕</button>
     </div>
   </div>
       <div class="section-footer">
         <span class="section-footer-label">Total</span>
         <span class="section-footer-total">£1,650</span>
-        <span class="section-footer-paid" style="color:#3ea6ff">£1,650</span>
+        <span class="section-footer-paid" style="color:#3ea6ff">£0</span>
         <span></span>
       </div>
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('joint',this.value)" style="color:#3ea6ff">
+        <input type="number" class="section-balance-input" value="1650" onchange="updateSectionBalance('joint',this.value)" style="color:#3ea6ff">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
@@ -409,11 +472,11 @@
       <div class="section-header">
         <div class="section-title" style="color:#a78bfa">Barclays</div>
         <div class="section-totals">
-          <div class="section-total">£1,652.45</div>
-          <div class="section-paid-badge badge-green">✓ All paid</div>
+          <div class="section-total">£1,286.83</div>
+          <div class="section-paid-badge badge-yellow">£0 paid</div>
         </div>
       </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:99.97276770855396%;background:#a78bfa"></div></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#a78bfa"></div></div>
       <div class="col-headers">
         <span></span>
         <span class="col-hdr">Item</span>
@@ -422,60 +485,52 @@
         <span></span>
       </div>
       <div class="items-table">
-    <div class="item-row is-paid" id="item_barclays_1">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',1,this.checked)">
+    <div class="item-row " id="item_barclays_1">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',1,this.checked)">
       <input class="item-name" value="Voneus" onchange="updateItemField('barclays',1,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="30" onchange="updateItemField('barclays',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="30" onchange="updateItemField('barclays',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('barclays',1)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_barclays_2">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',2,this.checked)">
+    <div class="item-row " id="item_barclays_2">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',2,this.checked)">
       <input class="item-name" value="CMA" onchange="updateItemField('barclays',2,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="926.45" onchange="updateItemField('barclays',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="926" onchange="updateItemField('barclays',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-amount" type="number" value="950.83" onchange="updateItemField('barclays',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('barclays',2)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_barclays_3">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',3,this.checked)">
-      <input class="item-name" value="Council Tax" onchange="updateItemField('barclays',3,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="390" onchange="updateItemField('barclays',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="390" onchange="updateItemField('barclays',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
-      <button class="item-delete" onclick="deleteItem('barclays',3)" title="Delete">✕</button>
-    </div>
-  
-    <div class="item-row is-paid" id="item_barclays_4">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',4,this.checked)">
+    <div class="item-row " id="item_barclays_4">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',4,this.checked)">
       <input class="item-name" value="Card Santander" onchange="updateItemField('barclays',4,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="118" onchange="updateItemField('barclays',4,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="118" onchange="updateItemField('barclays',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('barclays',4)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_barclays_5">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',5,this.checked)">
+    <div class="item-row " id="item_barclays_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',5,this.checked)">
       <input class="item-name" value="Card Virgin" onchange="updateItemField('barclays',5,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="188" onchange="updateItemField('barclays',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="188" onchange="updateItemField('barclays',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('barclays',5)" title="Delete">✕</button>
     </div>
   </div>
       <div class="section-footer">
         <span class="section-footer-label">Total</span>
-        <span class="section-footer-total">£1,652.45</span>
-        <span class="section-footer-paid" style="color:#a78bfa">£1,652</span>
+        <span class="section-footer-total">£1,286.83</span>
+        <span class="section-footer-paid" style="color:#a78bfa">£0</span>
         <span></span>
       </div>
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('barclays',this.value)" style="color:#a78bfa">
+        <input type="number" class="section-balance-input" value="1619" onchange="updateSectionBalance('barclays',this.value)" style="color:#a78bfa">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
-        <span class="section-remainder-value" style="color:#2ba640">£0</span>
+        <span class="section-remainder-value" style="color:#2ba640">£332.17</span>
       </div>
       <div class="add-item-row">
         <button class="btn-add-item" onclick="addItem('barclays')">+ Add item to Barclays</button>
@@ -486,7 +541,7 @@
       <div class="section-header">
         <div class="section-title" style="color:#ff4e45">AMEX</div>
         <div class="section-totals">
-          <div class="section-total">£2,469</div>
+          <div class="section-total">£2,234</div>
           <div class="section-paid-badge badge-green">✓ All paid</div>
         </div>
       </div>
@@ -502,31 +557,15 @@
     <div class="item-row is-paid" id="item_amex_1">
       <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('amex',1,this.checked)">
       <input class="item-name" value="AMEX Payment" onchange="updateItemField('amex',1,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="2000" onchange="updateItemField('amex',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="2000" onchange="updateItemField('amex',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-amount" type="number" value="2234" onchange="updateItemField('amex',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt paid-color" type="number" value="2234" onchange="updateItemField('amex',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('amex',1)" title="Delete">✕</button>
-    </div>
-  
-    <div class="item-row is-paid" id="item_amex_2">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('amex',2,this.checked)">
-      <input class="item-name" value="Amex Purchases" onchange="updateItemField('amex',2,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="138" onchange="updateItemField('amex',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="138" onchange="updateItemField('amex',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
-      <button class="item-delete" onclick="deleteItem('amex',2)" title="Delete">✕</button>
-    </div>
-  
-    <div class="item-row is-paid" id="item_amex_3">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('amex',3,this.checked)">
-      <input class="item-name" value="Barclaycard" onchange="updateItemField('amex',3,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="331" onchange="updateItemField('amex',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="331" onchange="updateItemField('amex',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
-      <button class="item-delete" onclick="deleteItem('amex',3)" title="Delete">✕</button>
     </div>
   </div>
       <div class="section-footer">
         <span class="section-footer-label">Total</span>
-        <span class="section-footer-total">£2,469</span>
-        <span class="section-footer-paid" style="color:#ff4e45">£2,469</span>
+        <span class="section-footer-total">£2,234</span>
+        <span class="section-footer-paid" style="color:#ff4e45">£2,234</span>
         <span></span>
       </div>
       
@@ -539,11 +578,11 @@
       <div class="section-header">
         <div class="section-title" style="color:#ff9500">Monzo</div>
         <div class="section-totals">
-          <div class="section-total">£1,100</div>
-          <div class="section-paid-badge badge-green">✓ All paid</div>
+          <div class="section-total">£905</div>
+          <div class="section-paid-badge badge-yellow">£0 paid</div>
         </div>
       </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#ff9500"></div></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#ff9500"></div></div>
       <div class="col-headers">
         <span></span>
         <span class="col-hdr">Item</span>
@@ -552,68 +591,60 @@
         <span></span>
       </div>
       <div class="items-table">
-    <div class="item-row is-paid" id="item_monzo_1">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',1,this.checked)">
-      <input class="item-name" value="Car Tax" onchange="updateItemField('monzo',1,'name',this.value)" placeholder="Item name">
-      <input class="item-amount" type="number" value="195" onchange="updateItemField('monzo',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="195" onchange="updateItemField('monzo',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
-      <button class="item-delete" onclick="deleteItem('monzo',1)" title="Delete">✕</button>
-    </div>
-  
-    <div class="item-row is-paid" id="item_monzo_2">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',2,this.checked)">
+    <div class="item-row " id="item_monzo_2">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',2,this.checked)">
       <input class="item-name" value="Car" onchange="updateItemField('monzo',2,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="647" onchange="updateItemField('monzo',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="647" onchange="updateItemField('monzo',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('monzo',2)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_monzo_3">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',3,this.checked)">
+    <div class="item-row " id="item_monzo_3">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',3,this.checked)">
       <input class="item-name" value="Royal London" onchange="updateItemField('monzo',3,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="15" onchange="updateItemField('monzo',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="15" onchange="updateItemField('monzo',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('monzo',3)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_monzo_4">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',4,this.checked)">
+    <div class="item-row " id="item_monzo_4">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',4,this.checked)">
       <input class="item-name" value="Card Nationwide" onchange="updateItemField('monzo',4,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="94" onchange="updateItemField('monzo',4,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="94" onchange="updateItemField('monzo',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('monzo',4)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_monzo_5">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',5,this.checked)">
+    <div class="item-row " id="item_monzo_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',5,this.checked)">
       <input class="item-name" value="Card Tesco" onchange="updateItemField('monzo',5,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="81" onchange="updateItemField('monzo',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="81" onchange="updateItemField('monzo',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('monzo',5)" title="Delete">✕</button>
     </div>
   
-    <div class="item-row is-paid" id="item_monzo_6">
-      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',6,this.checked)">
+    <div class="item-row " id="item_monzo_6">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',6,this.checked)">
       <input class="item-name" value="Mobile" onchange="updateItemField('monzo',6,'name',this.value)" placeholder="Item name">
       <input class="item-amount" type="number" value="68" onchange="updateItemField('monzo',6,'budget',parseFloat(this.value)||0)" title="Budget amount">
-      <input class="item-paid-amt paid-color" type="number" value="68" onchange="updateItemField('monzo',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
       <button class="item-delete" onclick="deleteItem('monzo',6)" title="Delete">✕</button>
     </div>
   </div>
       <div class="section-footer">
         <span class="section-footer-label">Total</span>
-        <span class="section-footer-total">£1,100</span>
-        <span class="section-footer-paid" style="color:#ff9500">£1,100</span>
+        <span class="section-footer-total">£905</span>
+        <span class="section-footer-paid" style="color:#ff9500">£0</span>
         <span></span>
       </div>
       
       <div class="section-balance-row">
         <span class="section-balance-label">Balance</span>
-        <input type="number" class="section-balance-input" value="0" onchange="updateSectionBalance('monzo',this.value)" style="color:#ff9500">
+        <input type="number" class="section-balance-input" value="942" onchange="updateSectionBalance('monzo',this.value)" style="color:#ff9500">
       </div>
       <div class="section-remainder-row">
         <span class="section-remainder-label">Remainder</span>
-        <span class="section-remainder-value" style="color:#2ba640">£0</span>
+        <span class="section-remainder-value" style="color:#2ba640">£37</span>
       </div>
       <div class="add-item-row">
         <button class="btn-add-item" onclick="addItem('monzo')">+ Add item to Monzo</button>
@@ -624,18 +655,18 @@
       <div class="charts-section">
         <div class="chart-card">
           <div class="chart-title">12-Month Income vs Spend</div>
-          <div class="chart-wrap" style="height:220px"><canvas id="trendChart" width="1290" height="440" style="display: block; box-sizing: border-box; height: 220px; width: 645px;"></canvas></div>
+          <div class="chart-wrap" style="height:220px"><canvas id="trendChart" width="1308" height="440" style="display: block; box-sizing: border-box; height: 220px; width: 654px;"></canvas></div>
         </div>
         <div class="chart-card">
           <div class="chart-title">Spending Breakdown (This Month)</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center">
-            <div class="chart-wrap" style="height:200px"><canvas id="breakdownChart" width="629" height="400" style="display: block; box-sizing: border-box; height: 200px; width: 314px;"></canvas></div>
+            <div class="chart-wrap" style="height:200px"><canvas id="breakdownChart" width="638" height="400" style="display: block; box-sizing: border-box; height: 200px; width: 319px;"></canvas></div>
             <div id="breakdownLegend">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
       <div style="width:12px;height:12px;border-radius:3px;background:#3ea6ff;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Joint</div>
-        <div style="font-size:11px;color:#64748b">£1,650 · 24%</div>
+        <div style="font-size:11px;color:#64748b">£1,650 · 27%</div>
       </div>
     </div>
   
@@ -643,7 +674,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#a78bfa;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Barclays</div>
-        <div style="font-size:11px;color:#64748b">£1,652.45 · 24%</div>
+        <div style="font-size:11px;color:#64748b">£1,286.83 · 21%</div>
       </div>
     </div>
   
@@ -651,7 +682,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#ff4e45;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">AMEX</div>
-        <div style="font-size:11px;color:#64748b">£2,469 · 36%</div>
+        <div style="font-size:11px;color:#64748b">£2,234 · 37%</div>
       </div>
     </div>
   
@@ -659,7 +690,7 @@
       <div style="width:12px;height:12px;border-radius:3px;background:#ff9500;flex-shrink:0"></div>
       <div>
         <div style="font-size:13px;font-weight:600;color:#f1f5f9">Monzo</div>
-        <div style="font-size:11px;color:#64748b">£1,100 · 16%</div>
+        <div style="font-size:11px;color:#64748b">£905 · 15%</div>
       </div>
     </div>
   </div>
@@ -681,11 +712,11 @@
   </div>
       <div class="amex-row">
     <span class="amex-key">Expenses</span>
-    <input type="number" value="2573" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#1C1C1E;font-family:inherit;" onchange="updateAmex('expenses',this.value)">
+    <input type="number" value="0" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#1C1C1E;font-family:inherit;" onchange="updateAmex('expenses',this.value)">
   </div>
       <div class="amex-row">
     <span class="amex-key">Balance − Expenses</span>
-    <span style="font-size:14px;font-weight:700;color:#3ea6ff">£2,013</span>
+    <span style="font-size:14px;font-weight:700;color:#3ea6ff">£4,586</span>
   </div>
       <div style="border-top:1px solid #272727;margin:6px 0"></div>
       <div class="amex-row">
@@ -694,7 +725,7 @@
   </div>
       <div class="amex-row">
     <span class="amex-key">Budget Remaining</span>
-    <span style="font-size:14px;font-weight:700;color:#ff4e45">£-213</span>
+    <span style="font-size:14px;font-weight:700;color:#ff4e45">£-2,786</span>
   </div>
     </div>
   </div>
@@ -962,7 +993,7 @@ const SEED_MONTH = {
 //  STATE
 // ============================================================
 const STORAGE_KEY = "budget_dashboard_v4";
-const EMBEDDED_STATE = /*SAVED_STATE_START*/{"currentMonth":"2026-03","months":{"2026-03":{"label":"March 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":1385,"isPaid":true},{"id":2,"name":"Cleaners","budget":90,"paid":90,"isPaid":true},{"id":3,"name":"Pet Insurance","budget":60,"paid":60,"isPaid":true},{"id":4,"name":"Electricity","budget":100,"paid":100,"isPaid":true},{"id":5,"name":"TV Licence","budget":15,"paid":15,"isPaid":true}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":30,"isPaid":true},{"id":2,"name":"CMA","budget":926.45,"paid":926,"isPaid":true},{"id":3,"name":"Council Tax","budget":390,"paid":390,"isPaid":true},{"id":4,"name":"Card Santander","budget":118,"paid":118,"isPaid":true},{"id":5,"name":"Card Virgin","budget":188,"paid":188,"isPaid":true}],"amex":[{"id":1,"name":"AMEX Payment","budget":2000,"paid":2000,"isPaid":true},{"id":2,"name":"Amex Purchases","budget":138,"paid":138,"isPaid":true},{"id":3,"name":"Barclaycard","budget":331,"paid":331,"isPaid":true}],"monzo":[{"id":1,"name":"Car Tax","budget":195,"paid":195,"isPaid":true},{"id":2,"name":"Car","budget":647,"paid":647,"isPaid":true},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":4,"name":"Card Nationwide","budget":94,"paid":94,"isPaid":true},{"id":5,"name":"Card Tesco","budget":81,"paid":81,"isPaid":true},{"id":6,"name":"Mobile","budget":68,"paid":68,"isPaid":true}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":2573,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""}}}/*SAVED_STATE_END*/;
+const EMBEDDED_STATE = /*SAVED_STATE_START*/{"currentMonth":"2026-04","months":{"2026-03":{"label":"March 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":1385,"isPaid":true},{"id":2,"name":"Cleaners","budget":90,"paid":90,"isPaid":true},{"id":3,"name":"Pet Insurance","budget":60,"paid":60,"isPaid":true},{"id":4,"name":"Electricity","budget":100,"paid":100,"isPaid":true},{"id":5,"name":"TV Licence","budget":15,"paid":15,"isPaid":true}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":30,"isPaid":true},{"id":2,"name":"CMA","budget":926.45,"paid":926,"isPaid":true},{"id":3,"name":"Council Tax","budget":390,"paid":390,"isPaid":true},{"id":4,"name":"Card Santander","budget":118,"paid":118,"isPaid":true},{"id":5,"name":"Card Virgin","budget":188,"paid":188,"isPaid":true}],"amex":[{"id":1,"name":"AMEX Payment","budget":2000,"paid":2000,"isPaid":true},{"id":2,"name":"Amex Purchases","budget":138,"paid":138,"isPaid":true},{"id":3,"name":"Barclaycard","budget":331,"paid":331,"isPaid":true}],"monzo":[{"id":1,"name":"Car Tax","budget":195,"paid":195,"isPaid":true},{"id":2,"name":"Car","budget":647,"paid":647,"isPaid":true},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":4,"name":"Card Nationwide","budget":94,"paid":94,"isPaid":true},{"id":5,"name":"Card Tesco","budget":81,"paid":81,"isPaid":true},{"id":6,"name":"Mobile","budget":68,"paid":68,"isPaid":true}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":2573,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-04":{"label":"April 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false},{"id":6,"name":"New item","budget":0,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":2234,"paid":2234,"isPaid":true}],"monzo":[{"id":2,"name":"Car","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":4,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":5,"name":"Card Tesco","budget":81,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1619,"amex":0,"monzo":942},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""}}}/*SAVED_STATE_END*/;
 let state = { currentMonth: "2026-03", months: {} };
 let trendChartInst = null, breakdownChartInst = null;
 let idCounters = {};
@@ -1684,4 +1715,4 @@ render();
 </script>
 
 
-</body></html>
+</body><div id="a9210aea-44f9-47ad-aec9-e6208a17f847" style="all: initial;"></div></html>
