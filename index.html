@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" coupert-item="9AF8D9A4E502F3784AD24272D81F0381"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Budget Dashboard</title>
@@ -244,38 +242,147 @@
   .gh-note { font-size: 11px; color: #717171; margin-top: 14px; line-height: 1.5; }
   .gh-note a { color: #3ea6ff; text-decoration: none; }
 </style>
-</head>
+<style>
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Regular.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Regular.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Regular.ttf);
+            unicode-range: U+61-7a;
+        }
+        
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Medium.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Medium.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Medium.ttf);
+            unicode-range: U+61-7a;
+        }
+
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Roboto-Bold.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Bold.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://9050B09D-7B53-4071-9AF0-11C0D6DA4408/font/Aileron-Bold.ttf);
+            unicode-range: U+61-7a;
+        }
+     
+    </style><style>
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Roboto-Regular.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Regular.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 400;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Regular.ttf);
+            unicode-range: U+61-7a;
+        }
+        
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Roboto-Medium.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Medium.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 600;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Medium.ttf);
+            unicode-range: U+61-7a;
+        }
+
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Roboto-Bold.ttf);  
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Bold.ttf);
+            unicode-range: U+41-5a;
+        }
+        @font-face{
+            font-family: 'Aileron'; 
+            font-weight: 700;
+            src: url(safari-web-extension://765E8921-3683-4547-B9BD-E5065C7550BA/font/Aileron-Bold.ttf);
+            unicode-range: U+61-7a;
+        }
+     
+    </style></head>
 <body>
 
 <!-- Password Gate -->
-<div id="passwordGate">
+<div id="passwordGate" style="display: none;">
   <div class="gate-card">
     <div class="gate-icon">🔒</div>
     <div class="gate-title">Budget Dashboard</div>
     <div class="gate-sub">Enter your password to continue</div>
-    <input class="gate-input" id="gateInput" type="password" placeholder="••••••••"
-      onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="current-password" />
+    <input class="gate-input" id="gateInput" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="current-password">
     <button class="gate-btn" onclick="checkPassword()">Unlock</button>
     <div class="gate-error" id="gateError"></div>
   </div>
 </div>
 
 <!-- GitHub Settings Modal -->
-<div id="ghModal">
+<div id="ghModal" class="">
   <div class="gh-card">
     <h2>☁️ GitHub Sync Setup</h2>
     <p>Enter your GitHub details below. These are stored only on this device and never shared.</p>
     <div class="gh-field">
       <label>GitHub Username</label>
-      <input id="ghUser" type="text" placeholder="e.g. nickduncombe" autocomplete="off" />
+      <input id="ghUser" type="text" placeholder="e.g. nickduncombe" autocomplete="off">
     </div>
     <div class="gh-field">
       <label>Repository Name</label>
-      <input id="ghRepo" type="text" placeholder="e.g. budget" autocomplete="off" />
+      <input id="ghRepo" type="text" placeholder="e.g. budget" autocomplete="off">
     </div>
     <div class="gh-field">
       <label>Personal Access Token</label>
-      <input id="ghToken" type="password" placeholder="ghp_••••••••••••••••••••" autocomplete="off" />
+      <input id="ghToken" type="password" placeholder="ghp_••••••••••••••••••••" autocomplete="off">
     </div>
     <div class="gh-actions">
       <button class="gh-cancel" onclick="closeGitHubSettings()">Cancel</button>
@@ -292,35 +399,348 @@
   <div class="header-title">💷 <span>Budget</span> Dashboard</div>
   <div class="month-nav">
     <button onclick="prevMonth()" title="Previous month">‹</button>
-    <select class="month-select" id="monthSelect" onchange="goToMonth(this.value)"></select>
+    <select class="month-select" id="monthSelect" onchange="goToMonth(this.value)"><option value="2026-03">March 2026</option><option value="2026-04">April 2026</option><option value="2026-05">May 2026</option><option value="2026-06">June 2026</option><option value="2026-07">July 2026</option><option value="2026-08">August 2026</option></select>
     <button onclick="nextMonth()" title="Next month">›</button>
     <button class="btn-new" onclick="showNewMonthModal()">+ New Month</button>
-    <button id="syncBtn" onclick="syncToGitHub()" style="background:#3ea6ff;border:none;color:#0f0f0f;padding:7px 16px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" title="Save &amp; sync to GitHub">☁️ Sync</button>
-    <button onclick="showGitHubSettings()" style="background:#272727;border:1px solid #3f3f3f;color:#aaaaaa;padding:7px 10px;border-radius:6px;cursor:pointer;font-size:14px;font-family:inherit;transition:background 0.15s;" onmouseover="this.style.background='#3f3f3f'" onmouseout="this.style.background='#272727'" title="GitHub settings">⚙️</button>
+    <button id="syncBtn" onclick="syncToGitHub()" style="background: rgb(62, 166, 255); border: medium; color: rgb(15, 15, 15); padding: 7px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 700; font-family: inherit; transition: opacity 0.15s; opacity: 0.6;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" title="Save &amp; sync to GitHub" disabled="">⏳ Syncing…</button>
+    <button onclick="showGitHubSettings()" style="background: rgb(39, 39, 39); border: 1px solid rgb(63, 63, 63); color: rgb(170, 170, 170); padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 14px; font-family: inherit; transition: background 0.15s;" onmouseover="this.style.background='#3f3f3f'" onmouseout="this.style.background='#272727'" title="GitHub settings">⚙️</button>
   </div>
 </div>
 
 <!-- Main -->
 <div class="main">
   <!-- KPI Row -->
-  <div class="kpi-row" id="kpiRow"></div>
+  <div class="kpi-row" id="kpiRow">
+    <div class="kpi-card">
+      <div class="kpi-label">Monthly Income</div>
+      <div><input class="income-edit" type="number" value="6714" onchange="updateIncome(this.value)" title="Click to edit income"></div>
+      <div class="kpi-sub">Click to edit</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Budgeted</div>
+      <div class="kpi-value spend">£6,060.83</div>
+      <div class="kpi-sub">Across all sections</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Paid</div>
+      <div class="kpi-value blue">£3,199.83</div>
+      <div class="kpi-sub">53% of budgeted</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Surplus</div>
+      <div class="kpi-value net-pos">+£32</div>
+      <div class="kpi-sub">Sum of section remainders</div>
+    </div>
+  </div>
 
   <!-- Content -->
   <div class="content-grid">
     <div class="left-col">
       <!-- Expense sections -->
-      <div class="sections-grid" id="sectionsGrid"></div>
+      <div class="sections-grid" id="sectionsGrid">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title" style="color:#3ea6ff">Joint</div>
+        <div class="section-totals">
+          <div class="section-total">£1,650</div>
+          <div class="section-paid-badge badge-yellow">£0 paid</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#3ea6ff"></div></div>
+      <div class="col-headers">
+        <span></span>
+        <span class="col-hdr">Item</span>
+        <span class="col-hdr right">Budget</span>
+        <span class="col-hdr right">Paid</span>
+        <span></span>
+      </div>
+      <div class="items-table">
+    <div class="item-row " id="item_joint_1">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',1,this.checked)">
+      <input class="item-name" value="Mortgage" onchange="updateItemField('joint',1,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="1385" onchange="updateItemField('joint',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',1)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_joint_2">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',2,this.checked)">
+      <input class="item-name" value="Cleaners" onchange="updateItemField('joint',2,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="90" onchange="updateItemField('joint',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',2)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_joint_3">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',3,this.checked)">
+      <input class="item-name" value="Pet Insurance" onchange="updateItemField('joint',3,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="60" onchange="updateItemField('joint',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',3)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_joint_4">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',4,this.checked)">
+      <input class="item-name" value="Electricity" onchange="updateItemField('joint',4,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="100" onchange="updateItemField('joint',4,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',4)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_joint_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('joint',5,this.checked)">
+      <input class="item-name" value="TV Licence" onchange="updateItemField('joint',5,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="15" onchange="updateItemField('joint',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('joint',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('joint',5)" title="Delete">✕</button>
+    </div>
+  </div>
+      <div class="section-footer">
+        <span class="section-footer-label">Total</span>
+        <span class="section-footer-total">£1,650</span>
+        <span class="section-footer-paid" style="color:#3ea6ff">£0</span>
+        <span></span>
+      </div>
+      
+      <div class="section-balance-row">
+        <span class="section-balance-label">Balance</span>
+        <input type="number" class="section-balance-input" value="1650" onchange="updateSectionBalance('joint',this.value)" style="color:#3ea6ff">
+      </div>
+      <div class="section-remainder-row">
+        <span class="section-remainder-label">Remainder</span>
+        <span class="section-remainder-value" style="color:#2ba640">£0</span>
+      </div>
+      <div class="add-item-row">
+        <button class="btn-add-item" onclick="addItem('joint')">+ Add item to Joint</button>
+      </div>
+    </div>
+  
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title" style="color:#a78bfa">Barclays</div>
+        <div class="section-totals">
+          <div class="section-total">£1,359.83</div>
+          <div class="section-paid-badge badge-yellow">£950.83 paid</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:69.92271092710118%;background:#a78bfa"></div></div>
+      <div class="col-headers">
+        <span></span>
+        <span class="col-hdr">Item</span>
+        <span class="col-hdr right">Budget</span>
+        <span class="col-hdr right">Paid</span>
+        <span></span>
+      </div>
+      <div class="items-table">
+    <div class="item-row " id="item_barclays_1">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',1,this.checked)">
+      <input class="item-name" value="Voneus" onchange="updateItemField('barclays',1,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="30" onchange="updateItemField('barclays',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('barclays',1)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row is-paid" id="item_barclays_2">
+      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('barclays',2,this.checked)">
+      <input class="item-name" value="CMA" onchange="updateItemField('barclays',2,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="950.83" onchange="updateItemField('barclays',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt paid-color" type="number" value="950.83" onchange="updateItemField('barclays',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('barclays',2)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_barclays_4">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',4,this.checked)">
+      <input class="item-name" value="Card Santander" onchange="updateItemField('barclays',4,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="115" onchange="updateItemField('barclays',4,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',4,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('barclays',4)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_barclays_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',5,this.checked)">
+      <input class="item-name" value="Card Virgin" onchange="updateItemField('barclays',5,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="170" onchange="updateItemField('barclays',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('barclays',5)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_barclays_6">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('barclays',6,this.checked)">
+      <input class="item-name" value="Nationwide" onchange="updateItemField('barclays',6,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="94" onchange="updateItemField('barclays',6,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('barclays',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('barclays',6)" title="Delete">✕</button>
+    </div>
+  </div>
+      <div class="section-footer">
+        <span class="section-footer-label">Total</span>
+        <span class="section-footer-total">£1,359.83</span>
+        <span class="section-footer-paid" style="color:#a78bfa">£950.83</span>
+        <span></span>
+      </div>
+      
+      <div class="section-balance-row">
+        <span class="section-balance-label">Balance</span>
+        <input type="number" class="section-balance-input" value="438" onchange="updateSectionBalance('barclays',this.value)" style="color:#a78bfa">
+      </div>
+      <div class="section-remainder-row">
+        <span class="section-remainder-label">Remainder</span>
+        <span class="section-remainder-value" style="color:#2ba640">£29</span>
+      </div>
+      <div class="add-item-row">
+        <button class="btn-add-item" onclick="addItem('barclays')">+ Add item to Barclays</button>
+      </div>
+    </div>
+  
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title" style="color:#ff4e45">AMEX</div>
+        <div class="section-totals">
+          <div class="section-total">£2,234</div>
+          <div class="section-paid-badge badge-green">✓ All paid</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#ff4e45"></div></div>
+      <div class="col-headers">
+        <span></span>
+        <span class="col-hdr">Item</span>
+        <span class="col-hdr right">Budget</span>
+        <span class="col-hdr right">Paid</span>
+        <span></span>
+      </div>
+      <div class="items-table">
+    <div class="item-row is-paid" id="item_amex_1">
+      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('amex',1,this.checked)">
+      <input class="item-name" value="AMEX Payment" onchange="updateItemField('amex',1,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="2234" onchange="updateItemField('amex',1,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt paid-color" type="number" value="2234" onchange="updateItemField('amex',1,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('amex',1)" title="Delete">✕</button>
+    </div>
+  </div>
+      <div class="section-footer">
+        <span class="section-footer-label">Total</span>
+        <span class="section-footer-total">£2,234</span>
+        <span class="section-footer-paid" style="color:#ff4e45">£2,234</span>
+        <span></span>
+      </div>
+      
+      <div class="add-item-row">
+        <button class="btn-add-item" onclick="addItem('amex')">+ Add item to AMEX</button>
+      </div>
+    </div>
+  
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title" style="color:#ff9500">Monzo</div>
+        <div class="section-totals">
+          <div class="section-total">£817</div>
+          <div class="section-paid-badge badge-yellow">£15 paid</div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:1.8359853121175032%;background:#ff9500"></div></div>
+      <div class="col-headers">
+        <span></span>
+        <span class="col-hdr">Item</span>
+        <span class="col-hdr right">Budget</span>
+        <span class="col-hdr right">Paid</span>
+        <span></span>
+      </div>
+      <div class="items-table">
+    <div class="item-row " id="item_monzo_2">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',2,this.checked)">
+      <input class="item-name" value="Tesla" onchange="updateItemField('monzo',2,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="647" onchange="updateItemField('monzo',2,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',2,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('monzo',2)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row is-paid" id="item_monzo_3">
+      <input type="checkbox" class="item-checkbox" checked="" onchange="togglePaid('monzo',3,this.checked)">
+      <input class="item-name" value="Royal London" onchange="updateItemField('monzo',3,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="15" onchange="updateItemField('monzo',3,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt paid-color" type="number" value="15" onchange="updateItemField('monzo',3,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('monzo',3)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_monzo_5">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',5,this.checked)">
+      <input class="item-name" value="Card Nationwide 2" onchange="updateItemField('monzo',5,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="87" onchange="updateItemField('monzo',5,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',5,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('monzo',5)" title="Delete">✕</button>
+    </div>
+  
+    <div class="item-row " id="item_monzo_6">
+      <input type="checkbox" class="item-checkbox" onchange="togglePaid('monzo',6,this.checked)">
+      <input class="item-name" value="Mobile" onchange="updateItemField('monzo',6,'name',this.value)" placeholder="Item name">
+      <input class="item-amount" type="number" value="68" onchange="updateItemField('monzo',6,'budget',parseFloat(this.value)||0)" title="Budget amount">
+      <input class="item-paid-amt unpaid-color" type="number" value="0" onchange="updateItemField('monzo',6,'paid',parseFloat(this.value)||0)" title="Amount paid">
+      <button class="item-delete" onclick="deleteItem('monzo',6)" title="Delete">✕</button>
+    </div>
+  </div>
+      <div class="section-footer">
+        <span class="section-footer-label">Total</span>
+        <span class="section-footer-total">£817</span>
+        <span class="section-footer-paid" style="color:#ff9500">£15</span>
+        <span></span>
+      </div>
+      
+      <div class="section-balance-row">
+        <span class="section-balance-label">Balance</span>
+        <input type="number" class="section-balance-input" value="805" onchange="updateSectionBalance('monzo',this.value)" style="color:#ff9500">
+      </div>
+      <div class="section-remainder-row">
+        <span class="section-remainder-label">Remainder</span>
+        <span class="section-remainder-value" style="color:#2ba640">£3</span>
+      </div>
+      <div class="add-item-row">
+        <button class="btn-add-item" onclick="addItem('monzo')">+ Add item to Monzo</button>
+      </div>
+    </div>
+  </div>
       <!-- Charts -->
       <div class="charts-section">
         <div class="chart-card">
           <div class="chart-title">12-Month Income vs Spend</div>
-          <div class="chart-wrap" style="height:220px"><canvas id="trendChart"></canvas></div>
+          <div class="chart-wrap" style="height:220px"><canvas id="trendChart" style="box-sizing: border-box; display: block; height: 220px; width: 1024px;" width="2048" height="440"></canvas></div>
         </div>
         <div class="chart-card">
           <div class="chart-title">Spending Breakdown (This Month)</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center">
-            <div class="chart-wrap" style="height:200px"><canvas id="breakdownChart"></canvas></div>
-            <div id="breakdownLegend"></div>
+            <div class="chart-wrap" style="height:200px"><canvas id="breakdownChart" style="box-sizing: border-box; display: block; height: 200px; width: 504px;" width="1008" height="400"></canvas></div>
+            <div id="breakdownLegend">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:12px;height:12px;border-radius:3px;background:#3ea6ff;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#f1f5f9">Joint</div>
+        <div style="font-size:11px;color:#64748b">£1,650 · 27%</div>
+      </div>
+    </div>
+  
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:12px;height:12px;border-radius:3px;background:#a78bfa;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#f1f5f9">Barclays</div>
+        <div style="font-size:11px;color:#64748b">£1,359.83 · 22%</div>
+      </div>
+    </div>
+  
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:12px;height:12px;border-radius:3px;background:#ff4e45;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#f1f5f9">AMEX</div>
+        <div style="font-size:11px;color:#64748b">£2,234 · 37%</div>
+      </div>
+    </div>
+  
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:12px;height:12px;border-radius:3px;background:#ff9500;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#f1f5f9">Monzo</div>
+        <div style="font-size:11px;color:#64748b">£817 · 13%</div>
+      </div>
+    </div>
+  </div>
           </div>
         </div>
       </div>
@@ -328,11 +748,143 @@
 
     <div class="right-col">
       <!-- AMEX Card -->
-      <div class="side-card" id="amexCard"></div>
+      <div class="side-card" id="amexCard">
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#ff4e45">AMEX Card</span>
+    </div>
+    <div class="side-card-body">
+      <div class="amex-row">
+    <span class="amex-key">Total Balance</span>
+    <input type="number" value="4758" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#f1f1f1;font-family:inherit;" onchange="updateAmex('balance',this.value)">
+  </div>
+      <div class="amex-row">
+    <span class="amex-key">Expenses</span>
+    <input type="number" value="3390" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#1C1C1E;font-family:inherit;" onchange="updateAmex('expenses',this.value)">
+  </div>
+      <div class="amex-row">
+    <span class="amex-key">Balance − Expenses</span>
+    <span style="font-size:14px;font-weight:700;color:#3ea6ff">£1,368</span>
+  </div>
+      <div style="border-top:1px solid #272727;margin:6px 0"></div>
+      <div class="amex-row">
+    <span class="amex-key">Monthly Budget</span>
+    <input type="number" value="1800" style="background:transparent;border:none;border-bottom:1px dashed #3f3f3f;text-align:right;width:110px;outline:none;font-size:13px;font-weight:600;color:#717171;font-family:inherit;" onchange="updateAmex('monthlyBudget',this.value)">
+  </div>
+      <div class="amex-row">
+    <span class="amex-key">Budget Remaining</span>
+    <span style="font-size:14px;font-weight:700;color:#2ba640">£432</span>
+  </div>
+    </div>
+  </div>
       <!-- Debt -->
-      <div class="side-card" id="debtCard"></div>
+      <div class="side-card" id="debtCard">
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#ff4e45">Credit Cards</span>
+    </div>
+    <div class="side-card-body">
+      
+      <div class="debt-item">
+        <div class="debt-row">
+          <input style="background:transparent;border:none;border-bottom:1px dashed #334155;color:#e2e8f0;font-size:13px;outline:none;flex:1;" value="Card Nationwide 1" onchange="updateDebtField(1,'name',this.value)">
+          <button class="debt-delete" onclick="deleteDebt(1)">✕</button>
+        </div>
+        <div class="debt-row" style="margin-top:4px">
+          <span style="font-size:11px;color:#64748b">Balance</span>
+          <input type="number" class="debt-edit-input" value="8790" onchange="updateDebtField(1,'balance',parseFloat(this.value)||0)" style="width:90px;text-align:right;color:#ef4444">
+        </div>
+        <div class="debt-meta">
+          <span>Limit: £6,430</span>
+          <span>Deal End: 2028-02</span>
+        </div>
+        <div class="debt-progress"><div class="debt-progress-fill" style="width:100%"></div></div>
+      </div>
+    
+      <div class="debt-item">
+        <div class="debt-row">
+          <input style="background:transparent;border:none;border-bottom:1px dashed #334155;color:#e2e8f0;font-size:13px;outline:none;flex:1;" value="Card Nationwide 2" onchange="updateDebtField(2,'name',this.value)">
+          <button class="debt-delete" onclick="deleteDebt(2)">✕</button>
+        </div>
+        <div class="debt-row" style="margin-top:4px">
+          <span style="font-size:11px;color:#64748b">Balance</span>
+          <input type="number" class="debt-edit-input" value="9479" onchange="updateDebtField(2,'balance',parseFloat(this.value)||0)" style="width:90px;text-align:right;color:#ef4444">
+        </div>
+        <div class="debt-meta">
+          <span>Limit: £7,700</span>
+          <span>Deal End: 2028-12</span>
+        </div>
+        <div class="debt-progress"><div class="debt-progress-fill" style="width:100%"></div></div>
+      </div>
+    
+      <div class="debt-item">
+        <div class="debt-row">
+          <input style="background:transparent;border:none;border-bottom:1px dashed #334155;color:#e2e8f0;font-size:13px;outline:none;flex:1;" value="Card Virgin" onchange="updateDebtField(3,'name',this.value)">
+          <button class="debt-delete" onclick="deleteDebt(3)">✕</button>
+        </div>
+        <div class="debt-row" style="margin-top:4px">
+          <span style="font-size:11px;color:#64748b">Balance</span>
+          <input type="number" class="debt-edit-input" value="8541" onchange="updateDebtField(3,'balance',parseFloat(this.value)||0)" style="width:90px;text-align:right;color:#ef4444">
+        </div>
+        <div class="debt-meta">
+          <span>Limit: £7,400</span>
+          <span>Deal End: 2027-12</span>
+        </div>
+        <div class="debt-progress"><div class="debt-progress-fill" style="width:100%"></div></div>
+      </div>
+    
+      <div class="debt-item">
+        <div class="debt-row">
+          <input style="background:transparent;border:none;border-bottom:1px dashed #334155;color:#e2e8f0;font-size:13px;outline:none;flex:1;" value="Card Santander" onchange="updateDebtField(4,'name',this.value)">
+          <button class="debt-delete" onclick="deleteDebt(4)">✕</button>
+        </div>
+        <div class="debt-row" style="margin-top:4px">
+          <span style="font-size:11px;color:#64748b">Balance</span>
+          <input type="number" class="debt-edit-input" value="11553" onchange="updateDebtField(4,'balance',parseFloat(this.value)||0)" style="width:90px;text-align:right;color:#ef4444">
+        </div>
+        <div class="debt-meta">
+          <span>Limit: £10,000</span>
+          <span>Deal End: 2027-12</span>
+        </div>
+        <div class="debt-progress"><div class="debt-progress-fill" style="width:100%"></div></div>
+      </div>
+    
+      <div class="debt-total-row">
+        <span class="debt-total-label">Total Debt</span>
+        <span class="debt-total-val">£38,363</span>
+      </div>
+      <button class="btn-add-debt" onclick="showAddDebtModal()">+ Add card / debt</button>
+    </div>
+  </div>
       <!-- Savings -->
-      <div class="side-card" id="savingsCard"></div>
+      <div class="side-card" id="savingsCard">
+    <div class="side-card-header">
+      <span class="side-card-title" style="color:#2ba640">Savings &amp; Funds</span>
+    </div>
+    <div class="side-card-body">
+      <div class="savings-total-row">
+        <span class="savings-total-label">Total Savings</span>
+        <input type="number" class="savings-total-input" value="6654" onchange="updateSavingTotal(this.value)">
+      </div>
+      <div class="savings-exp-header">Planned Expenditure</div>
+      
+    <div class="saving-exp-row">
+      <input class="saving-exp-name" value="Holiday" onchange="updateSavingExp(1,'name',this.value)" placeholder="Label">
+      <input type="number" class="saving-exp-amt" value="4760" onchange="updateSavingExp(1,'amount',parseFloat(this.value)||0)">
+      <button class="saving-exp-del" onclick="deleteSavingExp(1)">✕</button>
+    </div>
+  
+    <div class="saving-exp-row">
+      <input class="saving-exp-name" value="ASP" onchange="updateSavingExp(2,'name',this.value)" placeholder="Label">
+      <input type="number" class="saving-exp-amt" value="200" onchange="updateSavingExp(2,'amount',parseFloat(this.value)||0)">
+      <button class="saving-exp-del" onclick="deleteSavingExp(2)">✕</button>
+    </div>
+  
+      <button class="btn-add-saving" onclick="addSavingExp()">+ Add expenditure</button>
+      <div class="savings-remainder-row">
+        <span class="savings-remainder-label">Remainder</span>
+        <span style="font-size:20px;font-weight:800;color:#10b981">£1,694</span>
+      </div>
+    </div>
+  </div>
       <!-- Notes -->
       <div class="side-card">
         <div class="side-card-header"><span class="side-card-title">Notes</span></div>
@@ -345,7 +897,7 @@
 </div>
 
 <!-- New Month Modal -->
-<div class="modal-overlay" id="newMonthModal" style="display:none" onclick="if(event.target===this)closeNewMonthModal()">
+<div class="modal-overlay" id="newMonthModal" style="display: none;" onclick="if(event.target===this)closeNewMonthModal()">
   <div class="modal">
     <h3>Create New Month</h3>
     <label>Month</label>
@@ -359,7 +911,7 @@
     </select>
     <label>Year</label>
     <input type="number" id="newMonthYear" value="2026" min="2020" max="2030">
-    <label>Copy items from previous month? <input type="checkbox" id="copyPrev" checked></label>
+    <label>Copy items from previous month? <input type="checkbox" id="copyPrev" checked=""></label>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeNewMonthModal()">Cancel</button>
       <button class="btn-primary" onclick="createNewMonth()">Create</button>
@@ -488,31 +1040,20 @@ const SEED_MONTH = {
 //  STATE
 // ============================================================
 const STORAGE_KEY = "budget_dashboard_v4";
-const EMBEDDED_STATE = /*SAVED_STATE_START*/null/*SAVED_STATE_END*/;
+const EMBEDDED_STATE = /*SAVED_STATE_START*/{"currentMonth":"2026-04","months":{"2026-03":{"label":"March 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":1385,"isPaid":true},{"id":2,"name":"Cleaners","budget":90,"paid":90,"isPaid":true},{"id":3,"name":"Pet Insurance","budget":60,"paid":60,"isPaid":true},{"id":4,"name":"Electricity","budget":100,"paid":100,"isPaid":true},{"id":5,"name":"TV Licence","budget":15,"paid":15,"isPaid":true}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":30,"isPaid":true},{"id":2,"name":"CMA","budget":926.45,"paid":926,"isPaid":true},{"id":3,"name":"Council Tax","budget":390,"paid":390,"isPaid":true},{"id":4,"name":"Card Santander","budget":118,"paid":118,"isPaid":true},{"id":5,"name":"Card Virgin","budget":188,"paid":188,"isPaid":true}],"amex":[{"id":1,"name":"AMEX Payment","budget":2000,"paid":2000,"isPaid":true},{"id":2,"name":"Amex Purchases","budget":138,"paid":138,"isPaid":true},{"id":3,"name":"Barclaycard","budget":331,"paid":331,"isPaid":true}],"monzo":[{"id":1,"name":"Car Tax","budget":195,"paid":195,"isPaid":true},{"id":2,"name":"Car","budget":647,"paid":647,"isPaid":true},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":4,"name":"Card Nationwide","budget":94,"paid":94,"isPaid":true},{"id":5,"name":"Card Tesco","budget":81,"paid":81,"isPaid":true},{"id":6,"name":"Mobile","budget":68,"paid":68,"isPaid":true}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11669,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":2573,"balance":4586,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-04":{"label":"April 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":950.83,"isPaid":true},{"id":4,"name":"Card Santander","budget":115,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":170,"paid":0,"isPaid":false},{"id":6,"name":"Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":2234,"paid":2234,"isPaid":true}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":15,"isPaid":true},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":3390,"balance":4758,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":438,"amex":0,"monzo":805},"savings":{"total":6654,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-05":{"label":"May 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-06":{"label":"June 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":7,"name":"Council Tax","budget":410,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":1650,"barclays":1790,"amex":0,"monzo":817},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-07":{"label":"July 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":7,"name":"Council Tax","budget":410,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""},"2026-08":{"label":"August 2026","income":6714,"joint":[{"id":1,"name":"Mortgage","budget":1385,"paid":0,"isPaid":false},{"id":2,"name":"Cleaners","budget":90,"paid":0,"isPaid":false},{"id":3,"name":"Pet Insurance","budget":60,"paid":0,"isPaid":false},{"id":4,"name":"Electricity","budget":100,"paid":0,"isPaid":false},{"id":5,"name":"TV Licence","budget":15,"paid":0,"isPaid":false}],"barclays":[{"id":1,"name":"Voneus","budget":30,"paid":0,"isPaid":false},{"id":2,"name":"CMA","budget":950.83,"paid":0,"isPaid":false},{"id":4,"name":"Card Santander","budget":118,"paid":0,"isPaid":false},{"id":5,"name":"Card Virgin","budget":188,"paid":0,"isPaid":false},{"id":6,"name":"Card Nationwide","budget":94,"paid":0,"isPaid":false},{"id":7,"name":"Council Tax","budget":410,"paid":0,"isPaid":false}],"amex":[{"id":1,"name":"AMEX Payment","budget":1800,"paid":0,"isPaid":false}],"monzo":[{"id":2,"name":"Tesla","budget":647,"paid":0,"isPaid":false},{"id":3,"name":"Royal London","budget":15,"paid":0,"isPaid":false},{"id":5,"name":"Card Nationwide 2","budget":87,"paid":0,"isPaid":false},{"id":6,"name":"Mobile","budget":68,"paid":0,"isPaid":false}],"cards":[{"id":1,"name":"Card Nationwide 1","balance":8790,"limit":6430,"due":"2028-02"},{"id":2,"name":"Card Nationwide 2","balance":9479,"limit":7700,"due":"2028-12"},{"id":3,"name":"Card Virgin","balance":8541,"limit":7400,"due":"2027-12"},{"id":4,"name":"Card Santander","balance":11553,"limit":10000,"due":"2027-12"}],"amexTracker":{"expenses":0,"balance":4608,"monthlyBudget":1800},"sectionBalances":{"joint":0,"barclays":0,"amex":0,"monzo":0},"savings":{"total":6734,"expenditures":[{"id":1,"name":"Holiday","amount":4760},{"id":2,"name":"ASP","amount":200}]},"notes":""}}}/*SAVED_STATE_END*/;
 let state = { currentMonth: "2026-03", months: {} };
 let trendChartInst = null, breakdownChartInst = null;
 let idCounters = {};
 
 function loadState() {
-  // Compare timestamps: EMBEDDED_STATE (synced file) vs localStorage (local edits)
-  // Whichever has the newer _syncedAt wins — this ensures a freshly synced file
-  // always overrides stale localStorage on any device.
-  const embeddedTs = EMBEDDED_STATE ? (EMBEDDED_STATE._syncedAt || 0) : 0;
-  let localState = null, localTs = 0;
+  // 1. Try localStorage (fast in-session cache)
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { localState = JSON.parse(saved); localTs = localState._syncedAt || 0; }
+    if (saved) { state = JSON.parse(saved); return; }
   } catch(e) {}
-
-  if (EMBEDDED_STATE && embeddedTs >= localTs) {
-    // Synced file is newer (or equal) — use it and write to localStorage
-    state = JSON.parse(JSON.stringify(EMBEDDED_STATE));
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
-    return;
-  }
-  if (localState) { state = localState; return; }
+  // 2. Fall back to state embedded by the Save button
   if (EMBEDDED_STATE) { state = JSON.parse(JSON.stringify(EMBEDDED_STATE)); return; }
-  // Default seed data
+  // 3. Default seed data
   state.months["2026-03"] = JSON.parse(JSON.stringify(SEED_MONTH));
 }
 
@@ -529,13 +1070,9 @@ function buildUpdatedHtml() {
 
 function htmlToBase64(html) {
   const bytes = new TextEncoder().encode(html);
-  // Process in chunks to avoid freezing the browser on large files
-  const CHUNK = 0x8000;
-  const parts = [];
-  for (let i = 0; i < bytes.length; i += CHUNK) {
-    parts.push(String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK)));
-  }
-  return btoa(parts.join(''));
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
 }
 
 function showGitHubSettings() {
@@ -587,12 +1124,15 @@ async function doGitHubSync(user, repo, token) {
       'Content-Type': 'application/json'
     };
 
-    // Stamp the state with current time so other devices know this is newest
-    state._syncedAt = Date.now();
-    saveState();
-
-    // Use cached SHA if available (avoids downloading full file each sync)
-    let sha = localStorage.getItem('gh_sha') || null;
+    // Get current file SHA (needed for update)
+    let sha = null;
+    const getRes = await fetch(apiBase, { headers });
+    if (getRes.ok) {
+      const data = await getRes.json();
+      sha = data.sha;
+    } else if (getRes.status !== 404) {
+      throw new Error(`GitHub API error: ${getRes.status} ${getRes.statusText}`);
+    }
 
     // Push updated file
     const html = buildUpdatedHtml();
@@ -602,36 +1142,15 @@ async function doGitHubSync(user, repo, token) {
     };
     if (sha) body.sha = sha;
 
-    let putRes = await fetch(apiBase, {
+    const putRes = await fetch(apiBase, {
       method: 'PUT',
       headers,
       body: JSON.stringify(body)
     });
 
-    // If SHA mismatch (409), fetch fresh SHA and retry once
-    if (putRes.status === 409 || putRes.status === 422) {
-      const getRes = await fetch(apiBase, { headers });
-      if (getRes.ok) {
-        const data = await getRes.json();
-        sha = data.sha;
-        body.sha = sha;
-        putRes = await fetch(apiBase, {
-          method: 'PUT',
-          headers,
-          body: JSON.stringify(body)
-        });
-      }
-    }
-
     if (!putRes.ok) {
       const err = await putRes.json();
       throw new Error(err.message || `HTTP ${putRes.status}`);
-    }
-
-    // Cache the new SHA for next sync
-    const putData = await putRes.json();
-    if (putData.content && putData.content.sha) {
-      localStorage.setItem('gh_sha', putData.content.sha);
     }
 
     btn.innerHTML = '✅ Synced!';
@@ -647,16 +1166,13 @@ async function doGitHubSync(user, repo, token) {
     btn.innerHTML = '❌ Failed';
     btn.style.background = '#ff4e45';
     btn.style.opacity = '1';
-    console.error('GitHub sync error:', e);
-    alert(`Sync failed: ${e.message}\n\nCheck your GitHub settings (⚙️ button).`);
-  } finally {
-    // Always reset the button after 3s no matter what happened
     setTimeout(() => {
       btn.innerHTML = originalText;
       btn.style.background = '#3ea6ff';
       btn.disabled = false;
-      btn.style.opacity = '1';
     }, 3000);
+    console.error('GitHub sync error:', e);
+    alert(`Sync failed: ${e.message}\n\nCheck your GitHub settings (⚙️ button).`);
   }
 }
 
@@ -1244,5 +1760,6 @@ function escHtml(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"
 loadState();
 render();
 </script>
-</body>
-</html>
+
+
+<div id="a9210aea-44f9-47ad-aec9-e6208a17f847" style="all: initial;"></div></body><div id="7128f22a-b2ca-45ca-ac4e-f933907e7984" style="all: initial;"></div></html>
